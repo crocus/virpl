@@ -1,0 +1,28 @@
+<head><TITLE>Error 403 Forbidden однако</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+p{font-family: verdana; font-size:11px; color: #552121; text-decoration:none; font-weight:bold;}
+</style>
+</head>
+<body>
+<p style="font-size:70px; font-family:arial; margin:0px; padding:0px;">Error 403 Forbidden однако</p>
+<p>Сервер понял запрос, но он вам его выполнит!</p><br>
+<h1 style="font-size:20px; color:694D56; font-family:verdana;">Либо это ошибка, в чём я очень сомневаюсь! <span style="color:darkred;">либо ты позорно лезешь туда куда не надо!</span></h1>
+<p style="color:#cccccc; font-family:verdana; font-size:20px;">Если вы считаете что ваш бан на virpl.ru не  обоснован, пишите на 261-428-978, и обьясните почему?!<br><em>Для одарённых имбицилов: Все действия палятся в логах, а я туда часто заглядываю.</em>!</p>
+<h1 align="center" style="color:darkred; margin:0px; padding:0px;">кУлХаЦкЕр - ты следующий на бан :-)</h1><br><br>
+
+<table width="80%" cellpadding="0" cellspacing="0" border="0" align="center">
+<tr><td colspan="2" align="center" height="40px"><pre><h2>список заваленных гадёнышей и кулхацкеров и всяких разных уродов</h2></pre></td></tr>
+<tr><td width="50%" valign="top" align="left"><pre>deny from 188.128.98.126
+deny from 86.102.13.99
+deny from 77.35.30.94
+deny from 194.8.74.53
+</pre></td>
+</tr></table></noindex>
+<div align="center"><a href="/">главная страница</a></div>
+<p><!--#echo var="HTTP_REFERER" --><br>
+<!--#echo var="REMOTE_ADDR" --><br>
+<!--#echo var="HTTP_USER_AGENT" --><br>
+<!--#echo var="REQUEST_URI" --><br>
+</p>
+</body></html>
