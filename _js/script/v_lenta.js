@@ -87,7 +87,7 @@ $(document).ready(function(){
 					$("#link-report").attr("href",$("#sel-page").val());
 					break;
 				case "2":
-					$("#link-report").attr("href",$("#s-page").val());
+					$("#link-report").attr("href",$("#a-page").val());
 					break;
 			}
 		});
