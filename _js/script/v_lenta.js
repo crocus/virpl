@@ -8,7 +8,6 @@ $(document).ready(function(){
 		$.cookie("modeview", "review");
 	}
 	createModeView(modeview);
-	createTapeMode();
 	$.getJSON("../_scriptsphp/session_var.php", function(json){
 		var use = json.use;
 		var thisChecked = json.thisChecked;
@@ -93,7 +92,7 @@ $(document).ready(function(){
 		});
 	}).change();
 
-	$(".show-popup").live('click', function(){
+	$(".show-popup").click(function(){
 		var cell = $(this);
 		setTimeout(function () {		
 			if (jQuery.active) {
@@ -124,7 +123,7 @@ $(document).ready(function(){
 		});
 		return false;
 	});
-	$('input:checkbox').live ('click', function() {
+	$('input:checkbox').click(function() {
 		$(this).check('toggle');
 		if(this.checked) {
 			$(this).parents("tr").css("background-color", "#E3F2E1");
@@ -194,42 +193,6 @@ $(document).ready(function(){
 			window.location.reload();
 		});
 	});
-	////////////////////////////////////////////////////	
-	//Display Loading Image
-	/*function Display_Load()
-	{
-	$("#loading").fadeIn(900,0);
-	$("#loading").html("<img src='../_images/ajax-loader3.gif' />");
-	}*/
-	//Hide Loading Image
-	/*function Hide_Load()
-	{
-	$("#loading").fadeOut('slow');
-	};*/
-
-	//Default Starting Page Results
-	$("#pagination li:first")
-	.css({'color' : '#FF0084'}).css({'border' : 'none'});
-	//	Display_Load();
-	$("#content-table").load("base2.php?pageNum_Recordset1=0");
-
-	//Pagination Click
-	$("#pagination li").live('click',function(){
-		//		Display_Load();
-		//CSS Styles
-		$("#pagination li")
-		.css({'border' : 'solid #dddddd 1px'})
-		.css({'color' : '#0063DC'});
-
-		$(this)
-		.css({'color' : '#FF0084'})
-		.css({'border' : 'none'});
-
-		//Loading Data
-		var pageNum = this.id - 1;
-		$("#content-table").load("base2.php?pageNum_Recordset1=" + pageNum);
-	});
-	//////////////////////////////////
 });
 /**
 * Отмеченные объекты
@@ -250,63 +213,4 @@ function getStateChekboxes(){
 		unselected: unselected.join(",")
 	};
 	return stateChekboxes;
-}
-
-function createTapeMode(queryString){
-	$.getJSON("../base2.php",{query: queryString }, function(json){
-		var dataArray = json.data;
-		var tapeView ='<table id="o_lent" class="lenta d_table">';
-		$.each(dataArray, function(index, data){
-			tapeView += '<tr value="'+ data['flats_cod'] + '">';
-			tapeView += ' <td class="check" style="vertical-align:middle; width:30px;"><input class="ocheck" name="mcheck[]" type="checkbox"/></td>';
-			tapeView +='<td class="align_c show-popup" style=" width:90px;">' +
-			(( data['foto'] != 0) ? '<img src="base5.php?id_image='+ data['flats_cod'] + '&amp;category=0&amp;image=0&amp;min=1&amp;percent=0.12" alt="" /></td>':'');
-			tapeView += '<td class="align_r" style="width:100px;"><span class="lentprice">' + data["flats_price"] + ' руб.</span></td></tr>';
-
-
-		});
-		tapeView += '</table>';
-		tapeView += createPaginator(json.maxRows_Recordset1,json.totalPages_Recordset1,json.pageNum_Recordset1);
-
-		$("#objects").html(tapeView);
-	});
-}
-function createPaginator(maxRows_Recordset1, totalPages_Recordset1, pageNum_Recordset1){
-	var pages ='';
-	if (totalPages_Recordset1 > 10){
-		//Left block
-		var pages_start = 1;
-		var pages_max = pageNum_Recordset1 >= 5 ? 3 : 5;
-		for(var j = pages_start; j <= pages_max; j++){
-
-			pages += '<a href="#" id="'+j + '">'+j+'</a';
-		}
-		pages += '<span>... </span>';
-
-		//Middle block
-		if(pageNum_Recordset1 > 4 && pageNum_Recordset1 < (totalPages_Recordset1 - 3)){
-			pages_start = pageNum_Recordset1 - 1;
-			pages_max = pageNum_Recordset1 + 1;
-			for(var j = pages_start; j <= pages_max; j++){
-
-				pages += '<a href="#" id="'+ j + '">'+j+'</a';;
-				//pages += '<li id="'+(j+1) + '">'+(j+1)+'</li>';
-			}
-			pages += '<span>... </span>';
-		}
-
-		//Right block
-		pages_start = pageNum_Recordset1 <= totalPages_Recordset1 - 4 ? totalPages_Recordset1 - 2 : totalPages_Recordset1 - 4;
-		pages_max = totalPages_Recordset1;
-		for(var j = pages_start; j <= pages_max; j++){
-			pages += '<a href="#" id="'+j + '">'+j+'</a';
-		}
-	} else  {
-		for (var j = 1; j <= totalPages_Recordset1; $j++){
-			//pages += '<li id="'+ j + '">'+ j +'</li>';
-			pages += '<a href="#" id="'+j + '">'+j+'</a';
-		}
-	}
-	var paginator = '<div id="pagination">' + pages +'</div>';
-	return paginator;
 }
