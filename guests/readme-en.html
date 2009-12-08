@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>:: admbook :: version 1.15</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0">
+<table width="760" border="0" cellpadding="0" cellspacing="0" align="center" height="100%">
+<tr>
+	<td valign="top" bgcolor="#ffffff" class="text" colspan="2">
+		<h2><a href="http://www.mycgiserver.com/~sample/">admbook</a></h2>
+		<p><b>features</b>
+		<ul>
+			<li>database not required
+			<li>allows to delete and edit messages through a web interface (admin only)
+			<li>allows for admin to reply messages (admin only)
+			<li>parses all HTML tags except:  &lt;a href="http://domain.com"&gt;<a href="http://domain.com">Domain</a>&lt;/a&gt;<br> &lt;b&gt;<b>some text</b>&lt;/b&gt; &lt;i&gt;<i>some text</i>&lt;/i&gt; (can be turned on/off [admin only])
+			<li>splits long words into pieces by nn characters (number of chars can be set through a web interface (admin only))
+			<li>breaks message list into pages (number of messages per page is adjusted thruogh a web interface (admin only))
+			<li>replaces text smiles with picture icons (e.g. ;) - <img src="img/smile.gif" width="15" height="15"> or :p - <img src="img/tongue.gif" width="15" height="15"> ) (adjustable (admin only))
+			<li>filters unwanted words contaning in dictionary.inc (words can be added thruogh a web interface [admin only])
+		</ul>
+		<hr id="line" size="1" noshade>
+		<p><b>install</b>
+		<ul>
+			<li>copy all files into one directory retaning subdirectories structure
+			<li>set permissions to all files by a command "chmod 755 *", except data.inc, dictionary.inc and data.php, read about setting permissions to files in your operating system manual
+			<li>set permissions to data.inc, dictionary.inc, data.php with "chmod 666 data.inc dictionary.inc data.php"
+			<li>dictionary.inc contains cencored words, one string considered as a word
+		</ul>
+		<hr id="line" size="1" noshade>
+		<p><b>note</b>
+		<ul>
+			<li>if you have any futher questions or find any "bugs" please e-mail to <a href="mailto:trent@id.ru" class="redtext">trent@id.ru</a>
+			<li>product is positioned as a freeware and supplied "as is"
+			<li>special thanks to <a href="mailto:maximy@smtp.ru" class="redtext">Maxim Yefimochkin</a> for translating this manual
+		</ul>
+	</td>
+</tr>
+<tr>
+	<td valign="bottom"><br></td>
+	<td valign="bottom" align="right" height="20"><div><span class="text">&copy;&nbsp;</span><a href="mailto:trent@id.ru" class="redtext">trent</a>&nbsp;<a href="http://www.dagros.id.ru/" class="text">http://www.dagros.id.ru</a></div></td>
+</tr>
+</table>
+</body>
+</html>

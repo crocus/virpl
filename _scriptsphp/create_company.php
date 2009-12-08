@@ -1,0 +1,30 @@
+<?php
+include('r_conn.php');
+include('services.php');
+$prpt_company_array = array();
+$prpt_company_array['name'] = $_GET['n_companyname'];
+$prpt_company_array['inn'] = $_GET['inn'];
+$prpt_company_array['type_group'] = "7";
+$prpt_company_array['parent_group'] = "0";
+$prpt_company_array['moderated'] = "N";
+$tmp_c_array = createParticipants();
+$cr_prpt_query = createParticipant($prpt_company_array, $tmp_c_array);
+$result = mysql_query( $cr_prpt_query ) or die("Couldn t execute query.".mysql_error());		 
+$prpt_lider_array = array();
+$prpt_lider_array['name'] = $_GET['companyleaderlastname']." ".$_GET['companyleaderferstname']." ". $_GET['companyleadersecondname'];
+$prpt_lider_array['email'] = $_GET['companyleadermail'];
+$prpt_lider_array['role'] = "4";
+$prpt_lider_array['login'] = $_GET['companyleaderlogin'];
+$prpt_lider_array['password'] = md5($_GET['companyleaderconfpass']);
+$prpt_lider_array['type_group'] = "12";
+$prpt_lider_array['parent_group'] = $tmp_c_array[1];
+$prpt_lider_array['moderated'] = "N";
+$tmp_l_array = createParticipants();
+$cr_prpt_query = createParticipant($prpt_lider_array, $tmp_l_array);
+$result = mysql_query( $cr_prpt_query ) or die("Couldn t execute query.".mysql_error());
+//setcookie("Company", $prpt_company_array['name'],0, "/");
+unset($tmp_c_array);
+unset($tmp_l_array); 
+unset($prpt_company_array); 
+unset($prpt_lider_array);      
+?>

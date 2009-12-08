@@ -1,0 +1,153 @@
+﻿.ui-resizable {
+  position: relative;
+}
+
+.ui-resizable-handle {
+  position: absolute;
+  display: none;
+  font-size: 0.1px;
+}
+
+.ui-resizable .ui-resizable-handle {
+  display: block;
+}
+
+body .ui-resizable-disabled .ui-resizable-handle {
+  display: none;
+}/* use 'body' to make it more specific (css order) */
+
+body .ui-resizable-autohide .ui-resizable-handle {
+  display: none;
+}/* use 'body' to make it more specific (css order) */
+/* Стили диалогового окна */
+
+.myDialog .ui-dialog, .myDialog .ui-dialog {
+  background-color: #e6f7d4;
+}
+
+.myDialog .ui-dialog .ui-dialog-titlebar, .myDialog .ui-dialog .ui-dialog-titlebar {
+  border-bottom: 1px solid #d8d2aa;
+  background: #ff9900 url('dialog-title.gif') repeat-x;
+  padding: 0px;
+  height: 28px;
+}
+
+.myDialog .ui-dialog .ui-draggable .ui-dialog-titlebar, .myDialog .ui-dialog .ui-draggable .ui-dialog-titlebar {
+  cursor: move;
+}
+
+.myDialog .ui-dialog .ui-dialog-titlebar-close, .myDialog .ui-dialog .ui-dialog-titlebar-close {
+  width: 16px;
+  height: 16px;
+  background: url('dialog-titlebar-close.png') no-repeat;
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  cursor: default;
+  outline: none;
+}
+
+.myDialog .ui-dialog .ui-dialog-titlebar-close span, .myDialog .ui-dialog .ui-dialog-titlebar-close span {
+  display: none;
+}
+
+.myDialog .ui-dialog .ui-dialog-titlebar-close-hover, .myDialog .ui-dialog .ui-dialog-titlebar-close-hover {
+  background: url('dialog-titlebar-close-hover.png') no-repeat;
+}
+
+.myDialog .ui-dialog .ui-dialog-title, .myDialog .ui-dialog .ui-dialog-title {
+  margin-left: 5px;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  top: 7px;
+  left: 4px;
+}
+
+.myDialog .ui-dialog .ui-dialog-content, .myDialog .ui-dialog .ui-dialog-content {
+  margin: 1.2em;
+}
+
+.myDialog .ui-dialog .ui-dialog-buttonpane, .myDialog .ui-dialog .ui-dialog-buttonpane {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  width: 100%;
+  text-align: right;
+}
+
+.myDialog .ui-dialog .ui-dialog-buttonpane button, .myDialog .ui-dialog .ui-dialog-buttonpane button {
+  margin: 6px;
+}
+
+.myDialog .ui-dialog .ui-resizable-n, .myDialog .ui-dialog .ui-resizable-n {
+  cursor: n-resize;
+  height: 6px;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  background: transparent url('dialog-n.gif') repeat scroll center top;
+}
+
+.myDialog .ui-dialog .ui-resizable-s, .myDialog .ui-dialog .ui-resizable-s {
+  cursor: s-resize;
+  height: 8px;
+  width: 100%;
+  bottom: 0px;
+  left: 0px;
+  background: transparent url('dialog-s.gif') repeat scroll center top;
+}
+
+.myDialog .ui-dialog .ui-resizable-e, .myDialog .ui-dialog .ui-resizable-e {
+  cursor: e-resize;
+  width: 7px;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  background: transparent url('dialog-e.gif') repeat scroll right center;
+}
+
+.myDialog .ui-dialog .ui-resizable-w, .myDialog .ui-dialog .ui-resizable-w {
+  cursor: w-resize;
+  width: 7px;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  background: transparent url('dialog-w.gif') repeat scroll right center;
+}
+
+.myDialog .ui-dialog .ui-resizable-se, .myDialog .ui-dialog .ui-resizable-se {
+  cursor: se-resize;
+  width: 9px;
+  height: 9px;
+  right: 0px;
+  bottom: 0px;
+  background: transparent url('dialog-se.gif');
+}
+
+.myDialog .ui-dialog .ui-resizable-sw, .myDialog .ui-dialog .ui-resizable-sw {
+  cursor: sw-resize;
+  width: 9px;
+  height: 9px;
+  left: 0px;
+  bottom: 0px;
+  background: transparent url('dialog-sw.gif');
+}
+
+.myDialog .ui-dialog .ui-resizable-nw, .myDialog .ui-dialog .ui-resizable-nw {
+  cursor: nw-resize;
+  width: 9px;
+  height: 29px;
+  left: 0px;
+  top: 0px;
+  background: transparent url('dialog-nw.gif');
+}
+
+.myDialog .ui-dialog .ui-resizable-ne, .myDialog .ui-dialog .ui-resizable-ne {
+  cursor: ne-resize;
+  width: 9px;
+  height: 29px;
+  right: 0px;
+  top: 0px;
+  background: transparent url('dialog-ne.gif');
+}
