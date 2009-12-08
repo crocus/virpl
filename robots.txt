@@ -1,0 +1,3 @@
+Host: www.virpl.ru
+User-agent: *
+Disallow: /

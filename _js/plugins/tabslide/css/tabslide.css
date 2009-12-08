@@ -1,0 +1,127 @@
+#companyslide {
+/*	padding:0 20px;   */
+  position: relative;
+  margin: 0;
+  padding: 5px 5px 5px 5px;
+  width: 320px;
+  height: 95px;
+  overflow: hidden;
+}
+
+#companyslide a {
+  outline: none;
+}
+
+#companyslide .holder{
+  margin: 0 auto;
+  width: 935px;
+  padding: 0 0 0 53px;
+}
+
+#companyslide a, #companyslide a img{
+  text-decoration: none;
+  border: none;
+}
+
+#companyslide a:hover{
+  text-decoration: none;
+}
+
+#companyslide #main-container {
+  margin: 0 auto;
+  width: 600px;
+  padding: 0 10px;
+	border:2px solid #CCC;
+}
+
+#companyslide h1 {
+  margin: 0 0 20px;
+  font-size: 20px;
+}
+
+#companyslide h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+#companyslide p {
+  margin: 0 0 8px;
+}
+
+#companyslide a.prev {
+  position: absolute;
+  top: 1px;
+  left: 0;
+ /* background: url(../images/link-prev.gif) no-repeat;  */
+   background: none;
+  width: 13px;
+  height: 93px;
+  text-indent: -9999px;
+}
+
+#companyslide a.next {
+  position: absolute;
+  top: 1px;
+  right: 0;
+/*  background: url(../images/link-next.gif) no-repeat; */
+   background: none;
+  width: 13px;
+  height: 93px;
+  text-indent: -9999px;
+}
+
+#companyslide ul {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 9999px;
+  list-style: none;
+}
+
+#companyslide .tab-holder {
+/*	border:1px solid #fff; */
+  width: 310px;
+  overflow: hidden;
+}
+
+#companyslide .tab-holder li {
+  float: left;
+  width: 300px;
+  padding: 0px;
+padding-left: 10px;
+  font-size: 12px;
+}
+
+#companyslide .tab-holder li p {
+  margin: 0;
+  padding-left: 15px;
+ /* line-height: 18px; */
+}
+
+#companyslide .tab-holder li img {
+  float: left;
+  display: inline;
+  margin: 0 10px 5px 10px;
+}
+
+#companyslide .tabset li {
+  float: left;
+  margin: 0 2px 0 0;
+  display: inline;
+}
+
+#companyslide .tabset li a {
+  display: block;
+  width: 134px;
+  height: 32px;
+  line-height: 32px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  background: url(../../_js/plugins/tabslide/images/tab.gif) no-repeat;
+}
+
+#companyslide .tabset li a.active {
+  background-position: 0 -32px;
+}
