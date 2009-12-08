@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>:: admbook :: version 1.15</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#000000" vlink="#000000" alink="#000000" leftmargin="0" marginwidth="0" topmargin="0" marginheight="0">
+<table width="760" border="0" cellpadding="0" cellspacing="0" align="center" height="100%">
+<tr>
+	<td valign="top" bgcolor="#ffffff" class="text" colspan="2">
+		<h2><a href="http://www.mycgiserver.com/~sample/">admbook</a></h2>
+		<p><b>features</b>
+		<ul>
+			<li>база данных не требуется
+			<li>позволяет удалять и редактировать сообщения через браузер (admin only)
+			<li>позволяет админу отвечать на сообщения через браузер (admin only)
+			<li>не позволяет использовать html тэги, кроме: &lt;a href="http://domain.com"&gt;<a href="http://domain.com">Domain</a>&lt;/a&gt;<br> &lt;b&gt;<b>some text</b>&lt;/b&gt; &lt;i&gt;<i>some text</i>&lt;/i&gt; (включить/отлючить можно через браузер (admin only))
+			<li>разделяет слова на части по nn символов (количество символов в сообщении можно изменить через браузер (admin only))
+			<li>разбивает сообщения на страницы (количество сообщений на странице можно изменить через браузер (admin only))
+			<li>заменяет смайлики на картинки (например ;) - <img src="img/smile.gif" width="15" height="15"> или :p - <img src="img/tongue.gif" width="15" height="15"> ) (включить/отлючить можно через браузер (admin only))
+			<li>есть фильтр нежелательных слов из словаря (dictionary.inc - слова можно добавлять в словарь через браузер (admin only))
+		</ul>
+		<hr id="line" size="1" noshade>
+		<p><b>install</b>
+		<ul>
+			<li>скопировать все файлы в одну дерикторию, включая поддериктории
+			<li>у всех файлов, кроме data.inc, dictionary.inc и data.php выставить права, командой <b>chmod 755 *</b>, подробнее о выставлении прав на файл можно почитать на <a href="http://php.spb.ru/php/chmod.html" class="redtext">php.sbp.ru</a> или <a href="http://www.citforum.ru/operating_systems/unixuser/gl3_10_6.shtml" class="redtext">citforum</a>
+			<li>у файла data.inc выставить права, командой <b>chmod 666 data.inc</b>
+			<li>у файла dictionary.inc выставить права, командой <b>chmod 666 dictionary.inc</b>
+			<li>у файла data.php выставить права, командой <b>chmod 666 data.php</b>
+			<li>dictionary.inc - файл содержит слова, которые нежелательно отображать, одна строка, считается одним словом.
+			<li>в разделе configuration админской части выставить charset : win-1251
+			<li>в разделе configuration админской части выставить locale : RU
+		</ul>
+		<hr id="line" size="1" noshade>
+		<p><b>note</b>
+		<ul>
+			<li>если у вас возникают какие-либо дополнительные вопросы, то можете присылать их на e-mail - <a href="mailto:trent@id.ru" class="redtext">trent@id.ru</a>
+			<li>продукт рассматривается как freeware и поставляется "как есть"
+		</ul>
+	</td>
+</tr>
+<tr>
+	<td valign="bottom"><br></td>
+	<td valign="bottom" align="right" height="20"><div><span class="text">&copy;&nbsp;</span><a href="mailto:trent@id.ru" class="redtext">trent</a>&nbsp;<a href="http://www.dagros.id.ru/" class="text">http://www.dagros.id.ru</a></div></td>
+</tr>
+</table>
+</body>
+</html>

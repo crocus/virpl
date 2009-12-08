@@ -1,0 +1,9 @@
+#faq {float:left;width: 520px;margin: 0 auto; font-family: verdana,sans-serif,helvetica;}
+#faq {margin: 10px;}
+#faq .faqcontent {margin: 0 0 10px 10px;font-size: 95%;}
+#faq .shap {width: 100%; float: left; background-color: #F9FBFD;}
+.ready-answer {margin: 5px 0 0 20px;font-size: small; background-color: #F6F4E3 ; font-weight: bold ;}
+#faq h2.faqopened, #faq h2.faqclosed {cursor: pointer;padding: 0 0 0 15px;border-bottom: dotted 1px #ccc;margin-bottom: 0;}
+#faq h2.faqclosed:hover {color: black;}
+#faq h2.faqclosed {color: #666666;background: transparent url(collapsed.png) no-repeat scroll 0 5px;}
+#faq h2.faqopened {color: black;background: transparent url(expanded.png) no-repeat scroll 0 5px;}

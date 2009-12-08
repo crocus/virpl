@@ -1,0 +1,7 @@
+Options -Indexes
+<FilesMatch "\.(cfg|inc)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+php_value post_max_size 16M
+php_value upload_max_filesize 16M
