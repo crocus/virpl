@@ -1,7 +1,0 @@
-255.255.255.257<<<>>>trent<<<>>><<<>>>trent<<<>>>http://<<<>>>trent@id.ru<<<>>>test<<<>>>05th October, 2001<<<>>>23:31:55<<<>>><<<>>><<<>>><<<>>><!--resetline-->
-255.255.255.257<<<>>>trent<<<>>><<<>>>trent<<<>>>http://<<<>>>trent@id.ru<<<>>>Если у вас возникают какие-либо вопросы, то можете задавать их на почтовый ящик <a href="mailto:trent@id.ru">trent@id.ru</a>, но только после ознакомления с <a href="readme-ru.html">этой ссылкой</a><<<>>>05th October, 2001<<<>>>23:23:49<<<>>><<<>>><<<>>><<<>>><!--resetline-->
-255.255.255.257<<<>>>trent<<<>>><<<>>>trent<<<>>>http://<<<>>>trent@id.ru<<<>>>test message<<<>>>05th October, 2001<<<>>>23:18:47<<<>>>admin<<<>>>test reply message<<<>>>05th October, 2001<<<>>>23:19:20<!--resetline-->
-255.255.255.257<<<>>>trent<<<>>><<<>>>trent<<<>>>http://<<<>>>trent@id.ru<<<>>>test support tag:<br/><b>test test text</b><br/><br/><i>test text</i><br/><a href="http://www.ru/">test link</a><br/><br/>test unsupport tag:<br/><br/>&lt;font size=&quot;7&quot;&gt;test text&lt;/font&gt;<<<>>>05th October, 2001<<<>>>23:18:05<<<>>><<<>>><<<>>><<<>>><!--resetline-->
-255.255.255.257<<<>>>trent<<<>>><<<>>>trent<<<>>>http://<<<>>>trent@id.ru<<<>>>test filter word: fuck <br/><br/>admin seen real word<<<>>>05th October, 2001<<<>>>23:15:44<<<>>><<<>>><<<>>><<<>>><!--resetline-->
-255.255.255.257<<<>>>trent<<<>>><<<>>>trent<<<>>>http://www.mycgiserver.com/~sample/<<<>>>trent@id.ru<<<>>>Congratulation! <br/><br/>It's work.<<<>>>05th October, 2001<<<>>>23:13:59<<<>>><<<>>><<<>>><<<>>><!--resetline-->
-
