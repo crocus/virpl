@@ -194,10 +194,12 @@
 			try {
 				var pageTracker = _gat._getTracker("UA-10583093-2");
 				pageTracker._trackPageview();
-			} catch(err) {}</script>    
+			} catch(err) {}
+			</script>    
 	</body>
 </html>
 <script type="text/javascript" src="../_js/script/common.js"/></script>
- <script type="text/javascript" language="JavaScript" src="http://reformal.ru/tab.js?title=%C2%EB%E0%E4%E8%E2%EE%F1%F2%EE%EA%F1%EA%E8%E9+%C8%ED%F4%EE%F0%EC%E0%F6%E8%EE%ED%ED%FB%E9+%D0%E8%FD%EB%F2%EE%F0%F1%EA%E8%E9+%CF%EE%F0%F2%E0%EB&domain=virpl&color=949088&align=right&charset=utf-8&ltitle=&lfont=&lsize=&waction=0&regime=0"></script>
+ <!--<script type="text/javascript" language="JavaScript" src="http://reformal.ru/tab.js?title=%C2%EB%E0%E4%E8%E2%EE%F1%F2%EE%EA%F1%EA%E8%E9+%C8%ED%F4%EE%F0%EC%E0%F6%E8%EE%ED%ED%FB%E9+%D0%E8%FD%EB%F2%EE%F0%F1%EA%E8%E9+%CF%EE%F0%F2%E0%EB&domain=virpl&color=949088&align=right&charset=utf-8&ltitle=&lfont=&lsize=&waction=0&regime=0">
+ </script>-->
 <!--<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>-->
 <?php ob_end_flush();?> 

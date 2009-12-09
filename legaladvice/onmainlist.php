@@ -1,4 +1,5 @@
 <?php
+ob_start("ob_gzhandler");
 include('../_scriptsphp/r_conn.php');
 include('../_scriptsphp/rdate/rdate.php');
 require_once('../_scriptsphp/session.inc');
@@ -12,4 +13,5 @@ while ($row=mysql_fetch_array($r))  // для каждой записи орга
 	<?php
 	$c++;
 }
+ob_end_flush();
 ?>
