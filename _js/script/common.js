@@ -287,9 +287,7 @@ $(document).ready(function(){
 	 // 	alert  ( myJSONText);
 	 }
 	 }); */
-	$('#enter_priv').click(function(){
-		$('#autorization-dialog').dialog('open');
-	});
+
 	$("#autorization-dialog").dialog({
 		title: 'Авторизация',
 		bgiframe: true,
@@ -306,7 +304,9 @@ $(document).ready(function(){
 			}
 		}
 	});
-	
+		$('#enter_priv').click(function(){
+		$('#autorization-dialog').dialog('open');
+	});
 	$("#tabs").tabs();
 	$("#tabstest").tabs();
 	$('#back_t').click(function(){

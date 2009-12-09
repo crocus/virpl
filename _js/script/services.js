@@ -563,7 +563,7 @@ function adjustStreet(c_city, c_street){
 
 	};
 	/* block row*/
-	$.fn.block_row = function(opts) {
+	/*$.fn.block_row = function(opts) {
 		var row = $(this);
 		var height = row.height();
 		var offset = row.offset();
@@ -579,6 +579,6 @@ function adjustStreet(c_city, c_street){
 		setTimeout(function () {
 			$('div.holderByBlock').remove();
 		}, 500);
-	};
+	};*/
 	/* end block row*/
 })(jQuery);
