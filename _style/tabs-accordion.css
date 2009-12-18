@@ -11,14 +11,16 @@
 
 /* accordion header */
 #accordion h2 {
-	background:#CCCCCC;
-	color: #555555;
+	background:	#CCCCCC url(/_js/jquery/themes/smoothness/images/ui-bg_highlight-soft_75_cccccc_1x100.png) repeat-x scroll 50% 50%;
+	/*color: #555555;*/
+	color:#212121;
 	margin:0;
 	padding:5px 15px;
-	font-size: 1.1em;
 	font-weight:normal;
+	font-size: 1.2em;
 	font-family:Verdana,Arial,sans-serif;
-	border:1px solid #D3D3D3;
+	/*border:1px solid #D3D3D3;*/
+	border:1px solid #AAAAAA;
 	cursor:pointer;
 	-moz-border-radius-bottomleft:4px;
 	-moz-border-radius-bottomright:4px;

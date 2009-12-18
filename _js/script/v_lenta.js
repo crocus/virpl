@@ -106,7 +106,7 @@ $(document).ready(function(){
 					overlayCSS: { backgroundColor: '#E6E6E6' } 
 				}); 
 			}
-		}, 1000);
+		}, 300);
 		showPopup(cell.parent("tr").attr("value"));	
 		cell.parent("tr").unblock_row();		
 		return false;
