@@ -25,7 +25,7 @@ include('_scriptsphp/rdate/rdate.php');
 		  <td class="align_l"><?php $count_r = $row_Recordset1['room_cod']; $rooms = explode(",", $count_r);
 		  $text = '<span class="lentheader">'. $row_Recordset1['Header'].'</span>';
 echo $text;?></td>
-		  <td class="align_r" style=" width:100px;"><?php echo '<span class="lentprice">' . number_format($row_Recordset1['price_fb'], 0, '.', ' ').' руб.</span>'; ?></td><td><span style="font-size:0.8em;white-space:nowrap;">
+		  <td class="align_r" style=" width:100px;"><?php echo '<span class="lentprice">' . number_format($row_Recordset1['price_fb'], 0, '.', ' ').' руб.</span>'; ?></td><td class="align_r" style=" width:100px;"><span style="font-size:0.8em;white-space:nowrap;">
 			<?php
 	 if (isset($row_Recordset1['Date'])) {
 		//echo rdate(" H:i, j m ", strtotime($row_Recordset1['Date']) );

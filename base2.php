@@ -270,7 +270,7 @@ switch ( $ord ) {
 	case NULL:
 	case "nothing":
 	default :
-		$ordQuery = (" ORDER BY f.flats_date DESC");
+		$ordQuery = (" ORDER BY f.last_update DESC, f.flats_date DESC");
 		break;
 }
 $SQLQuery = $GenerQuery . $excludeIdQuery. $AgeQuery . $byidQuery. $and. $TypQuery . $and . $projectQuery. $and . $romQuery . $and . $regQuery . $and . $balQuery. $and . $saleQuery .$and.$wcQuery . $and . $planQuery . $and . $flrQuery . $priceQuery . $soQuery . $skQuery. $ordQuery;

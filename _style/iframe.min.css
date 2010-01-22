@@ -24,6 +24,10 @@ tfoot{text-align: center; vertical-align: baseline;}
 .align_r{text-align: right;}
 
 .contact{border: 1px solid #AAA; float: right; margin-left: -240px; width: 240px;}
+.color-row{
+background: #FCD9BA;
+}
+
 
 .d_table{border-collapse: collapse; font-size: 1em; height: auto; text-align: center; width: 100%;}
 
@@ -47,6 +51,14 @@ tfoot{text-align: center; vertical-align: baseline;}
 	margin-left:0.3em;
 	margin-right:0.3em;
 	vertical-align:middle;
+}
+.mlink{
+	color:#222222;
+	text-decoration: none;
+}
+.mlink:hover{
+	color: #F00;
+	text-decoration: underline;
 }
 .lenta td{border-bottom: 1px solid #CCCCCC; border-left: none; border-right: none; border-top: none; padding: 5px 0 5px 5px; vertical-align: top;}
 
@@ -99,7 +111,20 @@ tfoot{text-align: center; vertical-align: baseline;}
 	text-decoration: underline;
 }
 .red{color: #F00;}
-
+.gallery{
+	float:left;
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+	-webkit-border-radius: 5px;
+	border: thin solid #F0F0F0;
+	margin:5px 0; 
+	padding: 15px;
+	background-color:#FAFAFA;
+/*	E3FFF4;*/
+	clear:both;
+}
 .hide{
 	display: none;
 }
@@ -213,6 +238,10 @@ label.asblock {
 	background-color:#222;
 	padding:2px 7px;
 }
+#card{
+	display:none;
+	padding: 0 10px;
+}
 /*------paginator-------*/
 #loading 
 { 
@@ -223,6 +252,16 @@ label.asblock {
 { 
 	float: right;
 	padding:5px 10px; 
+}
+.photo{
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+	border:2px solid #CCCCCC;
+	display:inline-block;
+	padding:2px;
 }
 #pagination li
 { 

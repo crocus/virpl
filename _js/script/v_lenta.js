@@ -3,6 +3,11 @@ var obj_AvailableAgents = "";
 var thisChecked = "";
 $(document).ready(function(){
 	simple_tooltip(".with-checked", "tooltip");
+	$(".lenta tr").mouseover(function(){
+		$(this).addClass('color-row');
+	}).mouseout(function(){
+		$(this).removeClass('color-row');
+	});
 	if (modeview == null) {
 		modeview = "review";
 		$.cookie("modeview", "review");

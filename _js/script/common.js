@@ -14,6 +14,7 @@ $(document).ready(function(){
 		collapsible: true,
 		autoHeight: true
 	});
+	$("#foo").carousel();
 	/////////// тестовый аккардеон
 	/*	$("#accordion").tabs("#accordion div.pane", {
 	tabs: 'h2',  

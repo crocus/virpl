@@ -17,7 +17,7 @@
 	</head>
 	<body>
 		<div id="objects">
-<table id="o_lent" class="lenta d_table">
+			<table id="o_lent" class="lenta d_table">
 				<?php if($totalRows_Recordset1>0) {
 						do { ?>
 						<tr value="<?php echo $row_Recordset1['flats_cod']; ?>">
@@ -25,7 +25,7 @@
 								<input class="ocheck" name="mcheck[]" type="checkbox"/>
 							</td>
 							<td class="align_c show-popup" style=" width:90px;">
-								<?php if( $row_Recordset1['foto'] != 0) echo '<img src="base5.php?id_image='. $row_Recordset1['flats_cod'] .'&amp;category=0&amp;image=0&amp;min=1&amp;percent=0.12" alt="" />'?>
+								<?php if( $row_Recordset1['foto'] != 0) echo '<div class="photo"><img src="base5.php?id_image='. $row_Recordset1['flats_cod'] .'&amp;category=0&amp;image=0&amp;min=1&amp;percent=0.12" alt="" /></div>'?>
 							</td>
 							<td class="align_l show-popup">
 								<?php $count_r = $row_Recordset1['room_cod'];
@@ -81,7 +81,10 @@
 											$text .= $count_r. '-комнатная, ';
 											break;
 									}
-									$text .= $row_Recordset1['street_name'].'</a><br/><span class="lentbody">'. $row_Recordset1['So']. ' кв.м., '. $row_Recordset1['flats_floor'].'/'.$row_Recordset1['flats_floorest'].' '. $row_Recordset1['material_short']. ', '. (($row_Recordset1['region_name']==$row_Recordset1['city_name']) ? $row_Recordset1['city_name']: 'р-н '. $row_Recordset1['region_name']).'</span>';
+									$text .= $row_Recordset1['street_name'].'</a><br/><span class="lentbody">'. $row_Recordset1['So']. ' кв.м., '
+									. $row_Recordset1['flats_floor'].'/'.$row_Recordset1['flats_floorest'].' '. $row_Recordset1['material_short']
+									. ', '. (($row_Recordset1['region_name']==$row_Recordset1['city_name']) ? $row_Recordset1['city_name']: 'р-н '. $row_Recordset1['region_name'])
+									.'<span style="display:block;font-style: italic; font-size:1em;color:#73000B"></span></span>';
 									echo $text;?>
 							</td>
 							<td class="align_r" style=" width:100px;">
@@ -107,7 +110,7 @@
 
 						<?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
 				</table>
-				
+
 				<table>
 				<tr>
 				<td colspan="5" class="align_l" style="white-space: nowrap; font-size: 10pt;">
@@ -176,22 +179,22 @@
 				</tr>
 			</tfoot>
 		</table>
-			<!--	start paginator		-->
-			<div id="loading" ></div>
-			<div id="sstable" ></div>
-			<ul id="pagination">
-				<?php
-					//Pagination Numbers
-					/*for($i=1; $i<=10; $i++)
-					{
-					echo '<li id="'.$i.'">'.$i.'</li>';
-					}*/
-				?>
-			</ul>
-			<!--end paginator -->
+		<!--	start paginator		-->
+		<div id="loading" ></div>
+		<div id="sstable" ></div>
+		<ul id="pagination">
+			<?php
+				//Pagination Numbers
+				/*for($i=1; $i<=10; $i++)
+				{
+				echo '<li id="'.$i.'">'.$i.'</li>';
+				}*/
+			?>
+		</ul>
+		<!--end paginator -->
 		</div>
 
-		<div id="card" style="display:none;padding:10px;">
+		<div id="card">
 		</div>
 		<script type='text/javascript' src="/min/?g=jstape"></script>
 	</body>

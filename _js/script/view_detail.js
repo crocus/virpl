@@ -39,12 +39,14 @@ function showPopup(flat_id){
 			if (obj.Source == 0 && obj.Treated == 0) {
 				readyTreat = true;
 			}
+			var back_block ='<div style="clear:both; width:100%; margin: 5px 0; padding: 1px 0;"><img height="16" width="16" class="icon back_to_list_advert" alt="" title="вернуться к списку объектов" src="_images/arrow-curve-180.png"/><a href="#" class="back_to_list_advert mlink" title="назад">вернуться к списку объектов</a></div>';		
 			var result = '<div id="_mode-view" class="hide" style="padding: 0 0 5px 5px">Режим:<a href="#mode-view" id="mode-view-switch" title="Режим доступа" style ="padding-left:5px;">Просмотр/Редактирование</a></div>';
+			result += back_block;
 			result += '<div id="d_container" style="float: left;width: 100%;">';
-			result += '<div class="contact"><div class="textondiv"><span style="font-weight:500;">Объявление ID№:&nbsp;' + obj.UUID.substr(0, 8) + '</span><br />' +
+			result += '<div class="contact"><div class="textondiv"><span style="font-weight:500;">Код объявления:&nbsp;' + obj.UUID.substr(0, 8) + '</span><br />' +
 			'<div style="margin: 3px 0 3px;white-space:nowrap; font-size:0.8em;">Добавлено&nbsp;' +
 			customDateString(obj.flats_date) +
-			'</div><div style="margin: 3px 0 3px; white-space:nowrap; font-size:0.9em;">Просмотров: ' + hit.all + ' (уникальных: ' + hit.unique + ')</div><span style="color:#222;border-bottom: 1px dotted">Контактная информация</span><br />' +
+			'</div><div style="margin: 3px 0 3px; white-space:nowrap; font-size:0.8em;">Просмотров: ' + hit.day +'/'+ hit.all + ' (уникальных: ' + hit.unique + ')</div><span style="color:#222;border-bottom: 1px dotted">Контактная информация</span><br />' +
 			'<div style="margin-top: 5px">';
 			if (readyTreat) {
 				result += obj.Contact +
@@ -154,10 +156,10 @@ function showPopup(flat_id){
 			(obj.balcon_name != 'Не определено') ? object_bulk = '<span class="mark-field">Балкон/лоджия: </span>' + obj.balcon_name + '<br />' : object_bulk = '';
 			(obj.cond_name != 'Не определено') ? object_cond = '<span class="mark-field">Состояние: </span>' + obj.cond_name + '<br />' : object_cond = '';
 			(obj.side_name != '-') ? object_side = '<span class="mark-field">Сторона света: </span>' + obj.side_name + '<br />' : object_side = '';
-			object_price = '<div class="" style="color:#3E0009;font:bold 1.2em Arial,Verdana,Tahoma; padding: 5px 10px 0;">Цена ' + number_format(obj.flats_price, 0, '.', ' ') + ' руб. (' +
+			object_price = '<div style="color:#5D2E35;font:bold 1.2em Arial,Verdana,Tahoma; padding: 5px 10px 0;">Цена ' + number_format(obj.flats_price, 0, '.', ' ') + ' руб. (' +
 			((obj.kind_calc == 1 || obj.kind_calc == 2) ? '<span style="background-color:#99FF99;">~ ' + obj.flats_price_usd + ' $</span>' :'~ ' + obj.flats_price_usd +' $' ) +
 			')</div>';
-			result += '<div style="border-bottom: thin solid #001E36;margin:0 270px 5px 0;padding:0;color:#001E36"><span style="font: bold 1.3em Arial,Verdana,Tahoma;margin:0;padding:0;">'+object_type + object_place+'</span><br />'+
+			result += '<div style="border-bottom: thin solid #2B4558;margin:0 270px 5px 0;padding:0;color:#2B4558"><span style="font: bold 1.3em Arial,Verdana,Tahoma;margin:0;padding:0;">'+object_type + object_place+'</span><br />'+
 			object_price + '</div><div style="margin-right:250px;">' +
 			//object_type +
 			//object_place +
@@ -186,7 +188,8 @@ function showPopup(flat_id){
 			}
 			result += '<p><div class="textondiv">' + object_comments + '</div></p></div>';
 			if (obj.foto > 0) {
-				result += '<div id="gallery" style="float:left;margin-top: 10px;clear:both;"><div style="border-bottom: thin solid #001E36;margin:0 0 10px;padding:0;color:#001E36"><h3 style="margin:0;padding:0;">Фотографии</h3></div><ul id="gallery_din">';
+				result += '<div id="gallery" class="gallery"><ul id="gallery_din">';
+				//<div style="border-bottom: thin solid #2B4558;margin:0 0 10px;padding:0;color:#2B4558"><h3 style="margin:0;padding:0;">Фотографии</h3></div>
 				for (var i = 0; i < obj.foto; i++) {
 					result += '<li><a href="./base5.php?id_image=' + flat_id + '&category=0&image=' + i + '" rel="gallery" title="' + onplace + '" ><img src="./base5.php?id_image=' + flat_id + '&category=0&image=' +
 					i +
@@ -238,7 +241,7 @@ function showPopup(flat_id){
 			'<a href="#" id="r_saled" class="inform">Отметить объект проданным по цене:</a><br /><input type="text" id="r_price_sale" name="r_price_sale" class="inform" disabled="disabled"/><br />' +
 			'<div style="clear:both; margin-top: 10px;"><input type="button" id="r_update" name="r_update" value="Применить изменения" />' +
 			'<input type="button" id="r_delete" name="r_delete" value="Удалить" /></form></div></div>';
-			result += '<div style="clear:both; width:100%; margin:0; padding:0;"><p><a href="#" id="back_2" title="Назад">Назад</a></p></div>' + "<br />";
+			result += back_block;
 			$("#card").html(result);
 			$(window.parent.document).scrollTo(0);
 			$("#gallery_din").css({
@@ -274,7 +277,7 @@ function showPopup(flat_id){
 				jQuery("#objects").hide();
 				jQuery("#card").show();
 			}
-			$('#back_2').click(function(){
+			$('.back_to_list_advert').click(function(){
 				if ($.cookie("_filedir") != null) {
 					$.post("../_scriptsphp/trimming.php");
 				}
@@ -411,7 +414,7 @@ function inAutorized(obj){
 						$(this).attr("selected", "selected");
 					}
 				});
-				
+
 			});
 		});
 		$('#r_city').bind("change", function(){
@@ -574,8 +577,10 @@ function showPopupEx(exchange_id){
 				readyTreat = true;
 			}
 			var result = '<div id="_mode-view" class="hide" style="padding: 0 0 5px 5px">Режим:<a href="#mode-view" id="mode-view-switch" title="Режим доступа" style ="padding-left:5px;">Просмотр/Редактирование</a></div>';
+			var back_block ='<div style="clear:both; width:100%; margin: 5px 0; padding: 1px 0;"><img height="16" width="16" class="icon back_to_list_advert" alt="" title="вернуться к списку объектов" src="_images/arrow-curve-180.png"/><a href="#" class="back_to_list_advert mlink" title="назад">вернуться к списку объектов</a></div>';		
+			result += back_block;
 			result += '<div id="exd_container" style="float: left;width: 100%;">';
-			result += '<div class="contact"><div class="textondiv"><span>Объявление ID№:&nbsp;</span>' + obj.UUID.substr(0, 8) + '<br />' +
+			result += '<div class="contact"><div class="textondiv"><span>Код объявления:&nbsp;</span>' + obj.UUID.substr(0, 8) + '<br />' +
 			'Добавлено&nbsp;' +
 			customDateString(obj.Date) +
 			'<br /><div style="margin-top: 5px"><span class="letter">Контактная информация</span></div>' +
@@ -612,12 +617,10 @@ function showPopupEx(exchange_id){
 					break;
 			}
 			(Type_Exchange === "0") ? Formula = obj.Formula + '=' + obj.Result : Formula = obj.Result + '=' + obj.Formula;
-			result += '<div style="margin-right:250px;"><span class="advertheader">' + typeExchange + '&nbsp;' + Formula + '</span><br /><br />' +
-			'<span class="advertbody">' +
-			obj.Description +
-			'</span><br />';
+			result += '<div style="border-bottom: thin solid #2B4558;margin:0 270px 5px 0;padding:0;color:#2B4558"><span style="font: bold 1.3em Arial,Verdana,Tahoma;margin:0;padding:0;">' + typeExchange + '&nbsp;' + Formula +'</span></div>';
+			result += '<div style="margin-right:250px;"><div class="textondiv">' +	obj.Description +'</div>';
 			if (obj.foto > 0) {
-				result += '<div class="image-layer"><ul id="gallery_din">';
+				result += '<div class="image-layer gallery"><ul id="gallery_din">';
 				for (var i = 0; i < obj.foto; i++) {
 					result += '<li><div class="image-container"><div class="elemondiv"><a href="./base5.php?id_image=' + exchange_id + '&category=1&image=' + i + '" rel="gallery" ><img src="./base5.php?id_image=' + exchange_id + '&category=1&image=' +
 					i +
@@ -653,8 +656,7 @@ function showPopupEx(exchange_id){
 			/* конец формы добавления фотографий */
 			'<div style="clear:both; margin-top: 10px;"><input type="button" id="rex_update" name="rex_update" value="Применить изменения" />' +
 			'<input type="button" id="rex_delete" name="rex_delete" value="Удалить" /></form></div></div>';
-			result += '<div style="clear:both; width:100%; margin:0; padding:0;"><p><a href="#" id="back_2" title="Назад">Назад</a></p></div>' +
-			'<br />';
+			result += back_block;
 			$("#card-e").html(result);
 			$("#rex_photoredactor").draggable();
 			$(window.parent.document).scrollTo(0);
@@ -681,7 +683,7 @@ function showPopupEx(exchange_id){
 				jQuery("#objects").hide();
 				jQuery("#card-e").show();
 			}
-			$('#back_2').click(function(){
+			$('.back_to_list_advert').click(function(){
 				if ($.cookie("_filedir") != null) {
 					$.post("../_scriptsphp/trimming.php");
 				}
@@ -897,7 +899,8 @@ function PopupProposalBuy(id){
 		data: "id=" + id,
 		success: function(response){
 			var obj = eval("(" + response + ")");
-			var result = '<div id="d_container" style="float: left;width: 100%;"><div class="contact"><div class="textondiv"><span>Объявление ID№:&nbsp;</span>' + obj.UUID.substr(0, 8) + '<br />' +
+			var back_block ='<div style="clear:both; width:100%; margin: 5px 0; padding: 1px 0;"><img height="16" width="16" class="icon back_to_list_advert" alt="" title="вернуться к списку объектов" src="_images/arrow-curve-180.png"/><a href="#" class="back_to_list_advert mlink" title="назад">вернуться к списку объектов</a></div>';		
+			var result= '<div id="d_container" style="float: left;width: 100%;"><div class="contact"><div class="textondiv"><span>Код объявления:&nbsp;</span>' + obj.UUID.substr(0, 8) + '<br />' +
 			'Добавлено&nbsp;' +
 			customDateString(obj.Date) +
 			'<br /><div style="margin-top: 5px"><span class="letter">Контактная информация</span></div>' +
@@ -905,8 +908,8 @@ function PopupProposalBuy(id){
 			obj.Contact +
 			'</div></div></div>';
 			/* end right */
-			result += '<div style="margin-right:250px;"><span class="advertheader">' + obj.Header + '&nbsp;</span><br /><br />' +
-			'<span class="mark-field">Тип объекта: </span>' +
+			result += '<div style="border-bottom: thin solid #2B4558;margin:0 270px 5px 0;padding:0;color:#2B4558"><span style="font: bold 1.3em Arial,Verdana,Tahoma;margin:0;padding:0;">' + obj.Header +'</span></div>';
+			result += '<div style="margin-right:250px;"><span class="mark-field">Тип объекта: </span>' +
 			obj.type_name +
 			'<br /><span class="mark-field">Расположение: </span>' +
 			obj.regions +
@@ -915,14 +918,14 @@ function PopupProposalBuy(id){
 			' руб.<br /><p><span class="advertbody">' +
 			obj.comm_fb +
 			'</span></p>';
-			result += '<div style="clear:both; width:100%; margin:0; padding:0;"><p><a href="#" id="back_2" title="Назад">Назад</a></p></div>';
+			result += back_block;
 			$("#card-e").html(result);
 			$(window.parent.document).scrollTo(0);
 			if (jQuery("#card-e").css("display") == "none") {
 				jQuery("#objects").hide();
 				jQuery("#card-e").show();
 			}
-			$('#back_2').click(function(){
+			$('.back_to_list_advert').click(function(){
 				jQuery("#objects").show();
 				jQuery("#card-e").hide();
 				return false;

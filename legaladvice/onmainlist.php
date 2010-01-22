@@ -8,7 +8,7 @@ $r=mysql_query ("SELECT msg FROM gb WHERE response IS NOT NULL ORDER BY dt DESC 
 while ($row=mysql_fetch_array($r))  // для каждой записи организуем вывод.
 {
 	?>
-<li style="border-bottom: #CCC groove 1px; margin-bottom: 5px;"><span class="advice_digest" style="font-size:10pt;"><?php echo $row['msg']; ?></span></li>
+<li style="border-bottom: #CCC solid 1px; margin-bottom: 5px;"><span class="advice_digest" style="font-size:10pt;"><?php echo $row['msg']; ?></span></li>
 	<?php
 	$c++;
 }

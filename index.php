@@ -39,7 +39,7 @@
 	<body>
 		<noscript>В Вашем браузере выключена поддержка JavaScript, пожалуйста включите для корректной работы сайта.</noscript>
 		<script type="text/javascript" src="../_js/script/preloader.js"></script>
-
+		<div style="">
 		<div id="header">
 			<div id="logoslide" style="vertical-align:middle">
 				<div> <a href="http://www.foliant.net.ru"> <img src="_images/logo_fol_m.jpg" alt="" /></a></div>
@@ -98,92 +98,115 @@
 			<!---->
 		</div>
 		<div id="container">
-		<div id="left">
-			<div id="leftmenu">
-				<h2><a href="#" id="inhabitad"><span style=" font-size:1.1em">Жилая недвижимость</span></a></h2>
-				<div style="margin:0; padding:10px;">
-					<ul>
-						<!--<ul class="h_menu">-->
-						<li><a href="#fl" id="fl" class="mlink" rel="history">Все квартиры</a><span id="count_all_fl" class="count"></span></li>
-						<li><a href="#pods" id="pods" class="mlink" rel="history">Подселения</a><span id="count_pods" class="count"></span></li>
-						<li><a href="#0_fl" id="0_fl" class="mlink" rel="history">Гостинки</a><span id="count_0" class="count"></span></li>
-						<li><a href="#1_fl" id="1_fl" class="mlink" rel="history">1-комнатные</a><span id="count_1" class="count"></span></li>
-						<li><a href="#2_fl" id="2_fl" class="mlink" rel="history">2-комнатные</a><span id="count_2" class="count"></span></li>
-						<li><a href="#3_fl" id="3_fl" class="mlink" rel="history">3-комнатные</a><span id="count_3" class="count"></span></li>
-						<li><a href="#4_fl" id="4_fl" class="mlink" rel="history">4-комнатные</a><span id="count_4" class="count"></span></li>
-					</ul>
+			<div id="left">
+				<div id="leftmenu">
+					<h2><a href="#" id="inhabitad"><span style=" font-size:1.1em">Жилая недвижимость</span></a></h2>
+					<div style="margin:0; padding:10px;">
+						<ul>
+							<!--<ul class="h_menu">-->
+							<li><a href="#fl" id="fl" class="mlink" rel="history">Все квартиры</a><span id="count_all_fl" class="count"></span></li>
+							<li><a href="#pods" id="pods" class="mlink" rel="history">Подселения</a><span id="count_pods" class="count"></span></li>
+							<li><a href="#0_fl" id="0_fl" class="mlink" rel="history">Гостинки</a><span id="count_0" class="count"></span></li>
+							<li><a href="#1_fl" id="1_fl" class="mlink" rel="history">1-комнатные</a><span id="count_1" class="count"></span></li>
+							<li><a href="#2_fl" id="2_fl" class="mlink" rel="history">2-комнатные</a><span id="count_2" class="count"></span></li>
+							<li><a href="#3_fl" id="3_fl" class="mlink" rel="history">3-комнатные</a><span id="count_3" class="count"></span></li>
+							<li><a href="#4_fl" id="4_fl" class="mlink" rel="history">4-комнатные</a><span id="count_4" class="count"></span></li>
+						</ul>
+					</div>
+					<h2><a href="#">Коммерческая недвижимость</a></h2>
+					<div style="margin:0; padding:10px;">
+						<ul>
+							<li><a href="#" id="office" class="mlink">Офисы</a><span id="count_office" class="count"></span></li>
+							<li><a href="#" id="stroyeniya" class="mlink">Отдельностоящие строения</a><span id="count_str" class="count"></span></li>
+							<li><a href="#" id="proizvod" class="mlink">Производственно-складские помещения</a><span id="count_pr" class="count"></span></li>
+							<li><a href="#" id="torgovlya" class="mlink">Торговые помещения</a><span id="count_torg" class="count"></span></li>
+						</ul>
+					</div>
+					<h2><a href="#">Дома, участки и дачи</a></h2>
+					<div style="margin:0; padding:10px;">
+						<ul>
+							<li><a href="#" id="dom" class="mlink">Дома</a><span id="count_dom" class="count"></span></li>
+							<li><a href="#" id="kottedg" class="mlink">Коттеджи</a><span id="count_kot" class="count"></span></li>
+							<li><a href="#" id="grounds" class="mlink">Земельные участки</a><span id="count_gr" class="count"></span></li>
+							<li><a href="#" id="dachi" class="mlink">Дачи</a><span id="count_dach" class="count"></span></li>
+						</ul>
+					</div>
+					<h2><a href="#" id="s_exchanges">Обмены</a></h2>
+					<div></div>
+					<h2><a href="#" id="link_ext_seach">Расширенный поиск</a></h2>
+					<div></div>
 				</div>
-				<h2><a href="#">Коммерческая недвижимость</a></h2>
-				<div style="margin:0; padding:10px;">
-					<ul>
-						<li><a href="#" id="office" class="mlink">Офисы</a><span id="count_office" class="count"></span></li>
-						<li><a href="#" id="stroyeniya" class="mlink">Отдельностоящие строения</a><span id="count_str" class="count"></span></li>
-						<li><a href="#" id="proizvod" class="mlink">Производственно-складские помещения</a><span id="count_pr" class="count"></span></li>
-						<li><a href="#" id="torgovlya" class="mlink">Торговые помещения</a><span id="count_torg" class="count"></span></li>
-					</ul>
-				</div>
-				<h2><a href="#">Дома, участки и дачи</a></h2>
-				<div style="margin:0; padding:10px;">
-					<ul>
-						<li><a href="#" id="dom" class="mlink">Дома</a><span id="count_dom" class="count"></span></li>
-						<li><a href="#" id="kottedg" class="mlink">Коттеджи</a><span id="count_kot" class="count"></span></li>
-						<li><a href="#" id="grounds" class="mlink">Земельные участки</a><span id="count_gr" class="count"></span></li>
-						<li><a href="#" id="dachi" class="mlink">Дачи</a><span id="count_dach" class="count"></span></li>
-					</ul>
-				</div>
-				<h2><a href="#" id="s_exchanges">Обмены</a></h2>
-				<div></div>
-				<h2><a href="#" id="link_ext_seach">Расширенный поиск</a></h2>
-				<div></div>
 			</div>
-		</div>
-		<div id="right">
-			<div id="accordion">
-				<h2>Вопросы юристам</h2>
-				<div class="pane">
-					<ul id="advice"></ul>
-					<p style="margin: 0 5px 5px 5px; font-size:0.8em;"><a href="#" class="tolawyer">читать >></a></p>		
-				</div>
-				<h2>Новости</h2>
-				<div class="pane"><ul>
-						<li>22 августа 2009<br />
-							Большому кораблю - большое плавание.
+			<div id="right">
+				<div id='foo' class="carousel">
+					<ul>
+						<li>
+							<img src="http://farm4.static.flickr.com/3639/3319814586_dd9c1141dd.jpg?v=0" alt="example pic flicker 2" width="500" height="335" /> <cite><a class="image_link" href="/creativecommons/"><img width="16" height="16" class="trans_png" alt="Licence Creative Commons" src="http://l.yimg.com/g/images/home_cc.png"/></a> By <a href="http://www.flickr.com/photos/tanchristianr/">Don Takz</a></cite>
 						</li>
-					</ul><p></p></div>
-			</div>
-		</div>
-		<div id="content">
-			<div id="tabs">
-				<ul>
-					<li><a href="#objects">Продажа</a></li>
-				</ul>
-				<div id="objects"> <div style="padding:5px 0 10px 10px;">В виде:<a href="#" id="view_switch" title="Представление" style =" padding-left: 10px;">Таблицы/Ленты</a></div>
-					<div id="lenta" class="hide">
-						<iframe id="v_lenta" src="v_lenta.php" marginwidth="0" marginheight="0" style="width:100%;height:850px;overflow:hidden; border:0;" frameborder="0" scrolling="no"> </iframe>
+						<li>
+							<img src="http://l.yimg.com/g/images/home_photo_notsogoodphotography.jpg" alt="example pic flicker 1" width="500" height="335" /> <cite><a href="http://www.flickr.com/creativecommons/"><img width="16" height="16" class="trans_png" alt="Licence Creative Commons" src="http://l.yimg.com/g/images/home_cc.png"/></a> Par <a href="http://www.flickr.com/photos/notsogoodphotography/">notsogoodphotography</a></cite>
+						</li>
+						<li>
+							<img src="http://l.yimg.com/g/images/home_photo_junku.jpg" alt="example pic flicker 2" width="500" height="335" /> <cite><a href="http://www.flickr.com/creativecommons/"><img width="16" height="16" class="trans_png" alt="Licence Creative Commons" src="http://l.yimg.com/g/images/home_cc.png"/></a> By <a href="http://www.flickr.com/photos/junku-newcleus/">junku-newcleus</a></cite>
+						</li>
+						<li>
+							<img src="http://l.yimg.com/g/images/home_photo_pmorgan.jpg" alt="example pic flicker 2" width="500" height="335" /> <cite><a class="image_link" href="http://www.flickr.com/creativecommons/"><img width="16" height="16" class="trans_png" alt="Licence Creative Commons" src="http://l.yimg.com/g/images/home_cc.png"/></a> By <a href="http://www.flickr.com/photos/pmorgan/">pmorgan</a></cite>
+						</li>
+					</ul>
+				</div>	
+				<div id="accordion">
+					<h2>Вопросы юристам</h2>
+					<div class="pane">
+						<ul id="advice"></ul>
+						<p style="margin: 0 5px 5px 5px; font-size:0.8em;"><a href="#" class="tolawyer">читать >></a></p>		
 					</div>
-					<div id="table" class="show">
-						<iframe id="v_table" src="v_table.php" style="width:100%;height:800px;overflow:hidden; border:0;" frameborder="0" scrolling="no"> </iframe>
+					<h2>Новости</h2>
+					<div class="pane"><ul>
+							<li>22 августа 2009<br />
+								Большому кораблю - большое плавание.
+							</li>
+						</ul><p></p></div>
+					<h2>Реклама партнеров</h2>
+					<div id="lawers-banner">
+						<img class="tolawyer" src="_images/kol1.jpg" title="" alt="" width="185" style="cursor:pointer; padding: 0 5px 10px;"/>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="footer">
-			<p><div class="first" style="float: left; padding-left: 12px; font-size: .8em; text-transform: uppercase;"><span>Размещение рекламы — тел. +7 (4232) 441806 </span></div><div class="first" style="float: right; padding-right: 12px;"><span> &copy; 2009 ООО &quot;Фолиант&quot;</span><br />
-					<!--LiveInternet counter-->
-					<script type="text/javascript">
-						document.write("<a href='http://www.liveinternet.ru/click' "+
-						"target=_blank><img src='http://counter.yadro.ru/hit?t25.3;r"+
-						escape(document.referrer)+((typeof(screen)=="undefined")?"":
-						";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
-						screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
-						";"+Math.random()+"' alt='' title='LiveInternet: показано число посетителей за"+
-						" сегодня' "+"border='0' width='88' height='15'><\/a>")
-					</script>
-					<!--/LiveInternet-->
-			</div> </p>
-			<!--<div>Контакты: <a href="skype:crocus13?call" onload="return skypeCheck()"><img src="http://mystatus.skype.com/smallclassic/crocus13" style="border: none;" width="114" height="20" alt="Мой статус" /></a></div>
-			<br/><img src="http://web.icq.com/whitepages/online?icq=261428978&img=5" alt="Статус" />
-			</div>-->
+			<div id="content">
+				<div id="tabs">
+					<ul>
+						<li><a href="#objects">Продажа</a></li>
+					</ul>
+					<div id="objects"> <div style="padding:5px 0 10px 10px;">В виде:<a href="#" id="view_switch" title="Представление" style =" padding-left: 10px;">Таблицы/Ленты</a></div>
+						<div id="lenta" class="hide">
+							<iframe id="v_lenta" src="v_lenta.php" marginwidth="0" marginheight="0" style="width:100%;height:950px;overflow:hidden; border:0;" frameborder="0" scrolling="no"> </iframe>
+						</div>
+						<div id="table" class="show">
+							<iframe id="v_table" src="v_table.php" style="width:100%;height:800px;overflow:hidden; border:0;" frameborder="0" scrolling="no"> </iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<p><div class="first" style="float: left; padding-left: 12px; font-size: .8em; text-transform: uppercase;"><span>Размещение рекламы — тел. +7 (4232) 441806 </span></div><div id="copyright" class="first" style="float: right; padding-right: 12px;"><span> &copy; 2009 ООО &quot;Фолиант&quot;</span><br />
+						<!--LiveInternet counter-->
+						<script type="text/javascript">
+							<!--
+							document.write("<a href='http://www.liveinternet.ru/click' "+
+							"target=_blank><img src='http://counter.yadro.ru/hit?t25.3;r"+
+							escape(document.referrer)+((typeof(screen)=="undefined")?"":
+							";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+							screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+							";"+Math.random()+"' alt='' title='LiveInternet: показано число посетителей за"+
+							" сегодня' "+"border='0' width='88' height='15'><\/a>")
+							//--> 
+						</script>
+						<!--/LiveInternet-->
+				</div> </p>
+				<!--<div>Контакты: <a href="skype:crocus13?call" onload="return skypeCheck()"><img src="http://mystatus.skype.com/smallclassic/crocus13" style="border: none;" width="114" height="20" alt="Мой статус" /></a></div>
+				<br/><img src="http://web.icq.com/whitepages/online?icq=261428978&img=5" alt="Статус" />
+				</div>-->
+			</div>
 		</div>
 		<div  id="loading" style="position:absolute; top: 300px; left:400px; color:red; font-size:large; display:none">Загрузка</div>
 		<script type="text/javascript">
