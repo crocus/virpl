@@ -1,0 +1,92 @@
+/* root element for accordion. decorated with rounded borders and gradient background image */
+#accordion {
+	/*background:#333 url(/img/global/gradient/h600.png) 0 0;*/
+	/*width: 300px;*/
+	padding:0.2em 0.2em 0;
+	border:1px solid #A6C9E2;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+}
+
+/* accordion header */
+/* accordion header */
+#accordion h2 {
+	background:#DFEFFC url(/_js/jquery/themes/redmond/images/ui-bg_glass_85_dfeffc_1x400.png) repeat-x scroll 50% 50%;
+	border:1px solid #C5DBEC;
+	color:#2E6E9E;
+	margin:0;
+	padding:5px 15px;
+	font-weight:normal;
+	font-size: 1.2em;
+	font-family:Verdana,Arial,sans-serif;
+	cursor:pointer;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+/* currently active header */
+#accordion h2.current {
+	/*	cursor:default;*/
+	background-color:#fff;
+	color: #212121;
+}
+
+/* accordion pane */
+#accordion div.pane {
+	/* border:1px solid #A9A9A9;*/
+	/* border-width:0 2px;*/
+	/*display:none;*/
+	/*height:200px;*/
+	padding: 0 0 0 10px;
+	/*color:#fff;*/
+	font-size:12px;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+#lawers-banner{
+	text-align: center;
+	background-color: #9E070E; 
+	margin: 5px 0 10px;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#accordion ul {
+	margin: 5px 0 5px;
+	padding-left: 10px;
+	list-style-type: disc;
+}
+#accordion ul li{
+	margin: 0;
+	padding-left: 2px;
+}
+#accordion ul ul {
+	margin: 0px;
+}
+#accordion ul ul li{		
+	padding: 0 0 0 10px;
+	list-style-type: none;
+}
+
+/* a title inside pane */
+#accordion div.pane h3 {
+	font-weight:normal;
+	margin:0 0 -5px 0;
+	font-size:16px;
+	color:#999;
+}
