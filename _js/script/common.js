@@ -21,6 +21,12 @@ $(document).ready(function(){
 	effect: 'slide' 
 });*/
 	/////////////
+	$.getJSON("_scriptsphp/hot_advert.php", function(json){
+/*		$("#anonce_total").text(json.sale.actual);
+		$("#anonce_min").text(json.price.min);
+		$("#anonce_max").text(json.price.max);
+		$("#anonce_tleft").text(json.last.dated);*/
+		});
 	$.getJSON("_scriptsphp/anoncement.php", function(json){
 		$("#anonce_total").text(json.sale.actual);
 		$("#anonce_min").text(json.price.min);
