@@ -41,8 +41,7 @@ include('_scriptsphp/rdate/rdate.php');
 					<tr  id="m_tr"  onmouseover="this.style.background='#FCD9BA'" onmouseout="this.style.background=''"  onclick="showPopup(<?php echo $row_Recordset1['flats_cod']; ?>)">
 						<td > <?php
 									if (isset($row_Recordset1['flats_date'])) {
-									//echo  $o_date = strftime("%d %B %Y", strtotime($row_Recordset1['Date']));
-										echo RDate(" j m Y ", strtotime($row_Recordset1['flats_date']) );
+										echo nicetime($row_Recordset1['flats_date'], false);
 									}
 									?></td>
 						<td><?php echo $row_Recordset1['type_s']; ?></td>
@@ -78,7 +77,7 @@ include('_scriptsphp/rdate/rdate.php');
 						</td>
 					</tr>
 					<tr>
-						<td  colspan="4" align="center"valign="center" >Объекты с <?php echo ($startRow_Recordset1 + 1) ?> по <?php echo min($startRow_Recordset1 + $maxRows_Recordset1, $totalRows_Recordset1) ?> из <?php echo $totalRows_Recordset1 ?> найденных в базе данных
+						<td  colspan="4" align="center" valign="center" >Объекты с <?php echo ($startRow_Recordset1 + 1) ?> по <?php echo min($startRow_Recordset1 + $maxRows_Recordset1, $totalRows_Recordset1) ?> из <?php echo $totalRows_Recordset1 ?> найденных в базе данных
 						<?php } else { echo "Отсутствуют объявления, удовлетворяющие условиям, Вашего запроса.";}?></td>
 					</tr>
 				</tfoot>

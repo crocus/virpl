@@ -6,9 +6,10 @@
 	require_once('_scriptsphp/r_conn.php');
 	require_once('_scriptsphp/services.php');
 	require_once('_scriptsphp/session.inc');
+	//include('_scriptsphp/rdate/rdate.php');
 	session_start();
 	$currentPage = $_SERVER["PHP_SELF"];
-	$maxRows_Recordset1 = 10;
+	$maxRows_Recordset1 = 20;
 	$pageNum_Recordset1 = 0;
 	if (isset($_GET['maxRows_Recordset1'])) {
 		$maxRows_Recordset1 = $_GET['maxRows_Recordset1'];
@@ -52,7 +53,10 @@
 	$flr = $_GET['floor'];
 	$ord = $_GET['order'];
 	$byid = (isset($_GET['byid']) && strval($_GET['byid'] && !empty($_GET['byid']))) ? htmlspecialchars(trim(rtrim($_GET['byid']))) : null;
-	$age = (isset($_GET['pussy']) && strval($_GET['pussy'] && !empty($_GET['pussy']))) ? ' > '  . trim(rtrim($_GET['pussy'])) : ' < 14 ';
+	//$excludeId = (isset($_GET['exclude']) && strval($_GET['exclude'] && !empty($_GET['exclude']))) ? htmlspecialchars(trim(rtrim($_GET['exclude']))) : null;
+	$age = (isset($_GET['pussy']) && strval($_GET['pussy'] && !empty($_GET['pussy']))) ? ' > '  . trim(rtrim($_GET['pussy'])) : ' <= 14 ';
+	$ClaimQuery = (isset($_GET['claim']) && !empty($_GET['claim'])) ? " And f.flats_claim = 1 " : null;
+	$mortgageQuery = (isset($_GET['mortgage']) && !empty($_GET['mortgage'])) ? " And f.ipo_ch = 1 " : null;
 
 	if ( empty($minprice) && empty($maxprice) ) {
 		$priceQuery = "";
@@ -63,6 +67,29 @@
 	} else {
 		$priceQuery = " AND f.flats_price BETWEEN $minprice AND $maxprice";
 	}
+	$minso = (isset($_GET['minso']) && intval($_GET['minso'] && !empty($_GET['minso']))) ? preg_replace('/([^\d])/', "", $_GET['minso']) : null;
+	$maxso = (isset($_GET['maxso']) && intval($_GET['maxso'] && !empty($_GET['maxso']))) ? preg_replace('/([^\d])/', "", $_GET['maxso']) : null;
+	if ( empty($minso) && empty($maxso) ) {
+		$soQuery = "";
+	} elseif ( empty($minso) && !empty($maxso) ) {
+		$soQuery = " AND f.So <= $maxso";
+	} elseif ( !empty($minso) && empty($maxso) ) {
+		$soQuery = " AND f.So >= $minso";
+	} else {
+		$soQuery = " AND f.So BETWEEN $minso AND $maxso";
+	}
+	$minsk = (isset($_GET['minsk']) && intval($_GET['minsk'] && !empty($_GET['minsk']))) ? preg_replace('/([^\d])/', "", $_GET['minsk']) : null;
+	$maxsk = (isset($_GET['maxsk']) && intval($_GET['maxsk'] && !empty($_GET['maxsk']))) ? preg_replace('/([^\d])/', "", $_GET['maxsk']) : null;
+	if ( empty($minsk) && empty($maxsk) ) {
+		$skQuery = "";
+	} elseif ( empty($minsk) && !empty($maxsk) ) {
+		$skQuery = " AND f.Sk <= $maxsk";
+	} elseif ( !empty($minsk) && empty($maxsk) ) {
+		$skQuery = " AND f.Sk >= $minsk";
+	} else {
+		$skQuery = " AND f.Sk BETWEEN $minsk AND $maxsk";
+	}
+
 	if (isset( $_SESSION['forprint']) && !empty($_SESSION['forprint']) && isset($_GET['selected']) ) {
 		$includeId = $_SESSION['forprint'];
 	} elseif (isset( $_SESSION['hiddenRow']) && !empty($_SESSION['hiddenRow'])) {
@@ -73,6 +100,19 @@
 	} else {
 		$feefor="0";
 	}
+	/*if (isset( $_GET['feefor']) && !empty($_GET['feefor'])) {
+	$feefor = implode(",", $_GET['feefor']);
+	$_SESSION['thisChecked'] = $feefor;
+	} else {
+	$feefor="0";
+	}*/
+	/*if (isset( $_GET['marga']) && !is_null($_GET['marga'])) {
+	$marga = (((int)array_sum($_GET['marga'])) >= 0 )? "f.flats_price+" . array_sum($_GET['marga']) : "f.flats_price" . array_sum($_GET['marga']);
+	$marga_sum = (int)array_sum($_GET['marga']);
+	} else {
+	$marga_sum="0";
+	$marga="f.flats_price";
+	}*/
 	if (isset($_SESSION['margin']) && !is_null($_SESSION['margin'])) {
 		$marga = ($_SESSION['margin'] >= 0 )? "f.flats_price+" . $_SESSION['margin'] : "f.flats_price" . $_SESSION['margin'];
 		$marga_sum = $_SESSION['margin'];
@@ -107,7 +147,7 @@
 	$GenerQuery = "SELECT f.flats_cod, f.UUID, f.flats_date, f.So, f.Sz, f.Sk, IF (f.flats_cod NOT IN ({$feefor}), f.flats_price, {$marga}) as flats_price,".
 	"IF (f.flats_cod NOT IN ({$feefor}), '', {$marga_sum}) as marga, f.kind_calc, f.flats_floor, f.flats_floorest, t.type_s, r.room_cod, ci.city_name,".
 	"a.region_name, s.street_name, w.wc_name, b.balcon_short, m.material_short, f.flats_comments, n.value_property  AS agent_name, pp.value_property AS agency_name,".
-	"tp.phon, f.Source, f.Treated, UNIX_TIMESTAMP(f.last_update) as last_update {$logged_user_info} FROM tbl_flats f
+	"tp.phon, f.Source, f.Treated, UNIX_TIMESTAMP(f.last_update) as last_update {$logged_user_info} FROM tbl_flats f 
 	LEFT JOIN tbl_type t ON f.type_cod = t.type_cod 
 	LEFT JOIN tbl_room r ON f.room_cod = r.room_cod 
 	LEFT JOIN tbl_street s ON f.street_cod = s.street_cod  
@@ -126,11 +166,8 @@
 	FROM tbl_telag
 	GROUP BY agency_name) AS tp
 	ON pp.value_property = tp.agency_name ";
-	//na.Name_Node as agency_name,
-	//LEFT OUTER JOIN tbl_telag e ON na.Name_Node = e.agency_name 
-	//GROUP_CONCAT( e.num_tel SEPARATOR ', ') as phon,
-	//LEFT JOIN node n ON f.agent_cod = n.UUID 
-	//LEFT JOIN node na ON na.participants_id = n.parents_id 
+	/*LEFT JOIN node n ON f.agent_cod = n.UUID 
+	LEFT JOIN node na ON na.participants_id = n.parents_id */
 	if(isset($_SESSION['user'])&& !empty($_SESSION['user'])) {
 		$GenerQuery.= "WHERE DATEDIFF(NOW(), f.last_update) $age And f.sale = 0";
 	} else {
@@ -237,6 +274,9 @@
 		case "middle":
 			$flrQuery = (" f.flats_floor<>0 AND f.flats_floor<>1 AND f.flats_floor<>f.flats_floorest ");
 			break;
+		case "first":
+			$flrQuery = (" f.flats_floor IN (0,1) ");
+			break;
 		default :
 			$flrQuery  = " f.flats_floor IS NOT NULL ";
 			break;
@@ -254,22 +294,28 @@
 		case "room":
 			$ordQuery = (" ORDER BY r.room_cod");
 			break;
-		case "price":
+		case "pricedesk":
 			$ordQuery = (" ORDER BY f.flats_price DESC");
+			break;
+		case "priceasc":
+			$ordQuery = (" ORDER BY f.flats_price ASC");
+			break;
+		case "issource":
+			$ordQuery = (" And f.source = 0");
 			break;
 		case NULL:
 		case "nothing":
 		default :
-			$ordQuery = (" ORDER BY f.flats_date DESC");
+			$ordQuery = (" ORDER BY f.last_update DESC, f.flats_date DESC");
 			break;
 	}
-	$SQLQuery = $GenerQuery . $includeIdQuery . $excludeIdQuery. $AgeQuery . $byidQuery. $and. $TypQuery . $and . $projectQuery
-	. $and . $romQuery . $and . $regQuery . $and . $balQuery. $and . $saleQuery .$and.$wcQuery 
-	. $and . $planQuery . $and . $flrQuery . $priceQuery . $ordQuery;
+	$SQLQuery = $GenerQuery . $includeIdQuery . $excludeIdQuery. $AgeQuery . $ClaimQuery . $mortgageQuery. $byidQuery. $and. $TypQuery . $and . $projectQuery. $and . $romQuery . $and . $regQuery . $and . $balQuery. $and . $saleQuery .$and.$wcQuery . $and . $planQuery . $and . $flrQuery . $priceQuery . $soQuery . $skQuery. $ordQuery;
+	//echo $SQLQuery;
 	$query_Recordset1 = $SQLQuery;
 	$query_limit_Recordset1 = sprintf("%s LIMIT %d, %d", $query_Recordset1, $startRow_Recordset1, $maxRows_Recordset1);
 	$Recordset1 = mysql_query($query_limit_Recordset1, $realtorplus) or die(mysql_error());
 	$row_Recordset1 = mysql_fetch_assoc($Recordset1);
+
 	if (isset($_GET['totalRows_Recordset1'])) {
 		$totalRows_Recordset1 = $_GET['totalRows_Recordset1'];
 	} else {

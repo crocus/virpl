@@ -11,7 +11,7 @@ unset($user_p);
 $session_error = false;
 session_start();
 if (!$session_error) {
-$query_auth ="SELECT pc.Participants_id AS Id, pn.value_property AS Name, pr.value_property AS Role, pg.value_property AS Groupe
+$query_auth ="SELECT pc.Participants_id AS Id, pn.value_property AS Name, pr.value_property AS Role, pg.value_property AS Groupe, ppg.value_property AS parentGroupe
 FROM `tbl_participants_catalog` pc
 INNER JOIN `tbl_participants_catalog` pn ON pc.Participants_id = pn.Participants_id
 AND pn.Participants_property_id =1
@@ -19,6 +19,8 @@ INNER JOIN `tbl_participants_catalog` pr ON pc.Participants_id = pr.Participants
 AND pr.Participants_property_id =3
 INNER JOIN `tbl_participants_catalog` pg ON pc.Participants_id = pg.Participants_id
 AND pg.Participants_property_id =14
+INNER JOIN `tbl_participants_catalog` ppg ON pg.value_property=ppg.Participants_id
+AND ppg.Participants_property_id =14
 INNER JOIN `tbl_participants_catalog` pp ON pc.Participants_id = pp.Participants_id
 AND pp.Participants_property_id =6
 AND pp.value_property = '{$_SESSION['user_p']}' 
@@ -28,12 +30,13 @@ AND pc.value_property = '{$_SESSION['user']}'";
    $user_result = mysql_query($query_auth, $realtorplus) or die(mysql_error());
   $user_row = mysql_fetch_assoc($user_result);
   if (mysql_error() || @mysql_num_rows($user_result) != 1){
-    $session_error = true;
+	$session_error = true;
   } else {
 	$_SESSION['id']=$user_row['Id'];
 	$_SESSION['name']=$user_row['Name'];
 	$_SESSION['role']=$user_row['Role'];
 	$_SESSION['group']=$user_row['Groupe'];
+	$_SESSION['parent_group']=$user_row['parentGroupe'];
 	$_SESSION['use']=@mysql_num_rows($user_result); 
    };
 };

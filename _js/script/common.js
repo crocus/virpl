@@ -4,35 +4,56 @@ $(document).ready(function(){
 	if($.cookie("_filedir")!=null){
 		$.post("../_scriptsphp/trimming.php");
 	}
-//    $("#loading").ajaxStart(function(){
-//        $(this).show();
-//    });
-//    $("#loading").ajaxStop(function(){
-//        $(this).hide();
-//    });
+	//    $("#loading").ajaxStart(function(){
+	//        $(this).show();
+	//    });
+	//    $("#loading").ajaxStop(function(){
+	//        $(this).hide();
+	//    });
 	$("#leftmenu").accordion({
 		collapsible: true,
 		autoHeight: true
 	});
-	$("#foo").carousel();
+
 	/////////// тестовый аккардеон
 	/*	$("#accordion").tabs("#accordion div.pane", {
 	tabs: 'h2',  
 	effect: 'slide' 
-});*/
+	});*/
 	/////////////
-	$.getJSON("_scriptsphp/hot_advert.php", function(json){
-/*		$("#anonce_total").text(json.sale.actual);
-		$("#anonce_min").text(json.price.min);
-		$("#anonce_max").text(json.price.max);
-		$("#anonce_tleft").text(json.last.dated);*/
-		});
+	setHotAffair();
+	setIpotekaAffair();
+
+	$(".hot_list").live('click', function(){
+		var fc_id= $("span:first", this).attr("id").substr(3);
+		if ($("#hot-affair-tab").length === 0) {
+			$("#tabs").tabs("add", '#hot-affair-tab', 'Горячие предложения');
+			$("#hot-affair-tab").css({
+				"position": "relative",
+				"padding": "10px 0 0 0",
+				"height": "auto"
+			});
+			$("#hot-affair-tab").append('<iframe id="hot-affair-frame" name="hot-affair-frame" src="hot-affair.php" style="width:100%;height:1720px;overflow:hidden;" frameborder="0" scrolling="no"></iframe><p><a href="#" class="tabs-close-button" title="Закрыть вкладку"><img src="../_images/remove.png" width="32" height="32" alt="Закрыть вкладку" /></a></p>' + "<br />");	
+			$('#hot-affair-frame').load(function() {
+				$("#hot-affair-frame").get(0).contentWindow.showPopup(fc_id);
+			}); 
+		} else {	
+			$("#hot-affair-frame").get(0).contentWindow.showPopup(fc_id);
+		}
+		$("#tabs").tabs('option', 'selected', '#hot-affair-tab');		
+		return false;
+	});
+	$(".om_mortgage_list").live('click', function(){
+		$('#v_lenta').attr('src','v_lenta.php?mortgage=1');
+		$("#tabs").tabs('option', 'selected', '#objects');		
+		return false;
+	});
 	$.getJSON("_scriptsphp/anoncement.php", function(json){
 		$("#anonce_total").text(json.sale.actual);
 		$("#anonce_min").text(json.price.min);
 		$("#anonce_max").text(json.price.max);
 		$("#anonce_tleft").text(json.last.dated);
-		});
+	});
 	$('#logoslide').cycle({
 		fx: 'scrollLeft',
 		timeout: 6000,
@@ -189,7 +210,7 @@ $(document).ready(function(){
 				}
 			});
 		}
-		
+
 		return false;
 	});
 	$("#add_vacancy").click(function(){
@@ -220,6 +241,60 @@ $(document).ready(function(){
 				$("#lawyer").append(response).fadeIn('slow');
 				$("#lawyer").append('<p><a href="#" class="tabs-close-button" title="Закрыть вкладку"><img src="../_images/remove.png" width="32" height="32" alt="Закрыть вкладку" /></a></p>' + "<br />");
 				$("#tabs").tabs('option', 'selected', '#lawyer');
+				$(".loader").remove();
+			});
+		}
+		return false;
+	});
+	$(".toreappraisers").live("click",function(){
+		if ($("#reappraisers").length === 0) {
+			$("#tabs").tabs("add", '#reappraisers', 'Консультации оценщиков');
+			$("a[href='#reappraisers']").append('<img src="../_images/ajax-loader.gif" class="loader" style="padding-left:5px;vertical-align: middle;" width="16" height="16" alt="" />');
+			$("#reappraisers").css({
+				"position": "relative",
+				"padding": "0",
+				"height": "auto"
+			});
+			$.get('../valuation/index.php', function(response){
+				$("#reappraisers").append(response).fadeIn('slow');
+				$("#reappraisers").append('<p><a href="#" class="tabs-close-button" title="Закрыть вкладку"><img src="../_images/remove.png" width="32" height="32" alt="Закрыть вкладку" /></a></p>' + "<br />");
+				$("#tabs").tabs('option', 'selected', '#reappraisers');
+				$(".loader").remove();
+			});
+		}
+		return false;
+	});
+	$(".metodology").live("click",function(){
+		if ($("#metodology").length === 0) {
+			$("#tabs").tabs("add", '#metodology', 'Обучающие материалы');
+			$("a[href='#metodology']").append('<img src="../_images/ajax-loader.gif" class="loader" style="padding-left:5px;vertical-align: middle;" width="16" height="16" alt="" />');
+			$("#metodology").css({
+				"position": "relative",
+				"padding": "5px",
+				"height": "auto"
+			});
+			$.get('../_scriptsphp/metodology.php', function(response){
+				$("#metodology").append(response).fadeIn('slow');
+				$("#metodology").append('<p><a href="#" class="tabs-close-button" title="Закрыть вкладку"><img src="../_images/remove.png" width="32" height="32" alt="Закрыть вкладку" /></a></p>' + "<br />");
+				$("#tabs").tabs('option', 'selected', '#metodology');
+				$(".loader").remove();
+			});
+		}
+		return false;
+	});
+	$(".toBanks").live("click",function(){
+		if ($("#mg_banks").length === 0) {
+			$("#tabs").tabs("add", '#mg_banks', 'Банки-партнеры');
+			$("a[href='#mg_banks']").append('<img src="../_images/ajax-loader.gif" class="loader" style="padding-left:5px;vertical-align: middle;" width="16" height="16" alt="" />');
+			$("#mg_banks").css({
+				"position": "relative",
+				"padding": "0",
+				"height": "auto"
+			});
+			$.get('../mg_banks/banks.php', function(response){
+				$("#mg_banks").append(response).fadeIn('slow');
+				$("#mg_banks").append('<p><a href="#" class="tabs-close-button" title="Закрыть вкладку"><img src="../_images/remove.png" width="32" height="32" alt="Закрыть вкладку" /></a></p>' + "<br />");
+				$("#tabs").tabs('option', 'selected', '#mg_banks');
 				$(".loader").remove();
 			});
 		}
@@ -275,7 +350,7 @@ $(document).ready(function(){
 				"position": "relative",
 				"height": "auto"
 			});
-			$.get('../../left_search.php', {}, function(response){
+			$.get('../../left_search.php?ver=private', {}, function(response){
 				$("#extseach").append(response).fadeIn('slow');
 				$("#extseach").append('<p><a href="#" class="tabs-close-button" title="Закрыть вкладку"><img src="../_images/remove.png" width="32" height="32" alt="Закрыть вкладку" /></a></p>' + "<br />");
 			});
@@ -283,17 +358,39 @@ $(document).ready(function(){
 		$("#tabs").tabs('option', 'selected', '#extseach');
 		return false;
 	});
+	$("#d_search").load("../left_search.php").addClass('block-in-tab');
+	$("#b_search").click(function(){
+		$("#d_search").toggle();
+		return false;
+	});
+	$("#no_legal_objects_l").click(function(){
+		if ($("#no_legal_objects").length === 0) {
+			$("#tabs").tabs("add", '#no_legal_objects', 'Сомнительные объекты');
+			$("a[href='#no_legal_objects']").append('<img src="../_images/ajax-loader.gif" class="loader" style="padding-left:5px;vertical-align: middle;" width="16" height="16" alt="" />');
+			$("#no_legal_objects").css({
+				"position": "relative",
+				"height": "auto"
+			});
+			$.get('../_scriptsphp/doubtful_index.php', {}, function(response){
+				$("#no_legal_objects").append(response).fadeIn('slow');
+				$("#no_legal_objects").append('<p><a href="#" class="tabs-close-button" title="Закрыть вкладку"><img src="../_images/remove.png" width="32" height="32" alt="Закрыть вкладку" /></a></p>' + "<br />");
+				$(".loader").remove();
+			});
+		}
+		$("#tabs").tabs('option', 'selected', '#no_legal_objects');
+		return false;
+	});
 	/*$.ajax({
-	 type : "GET",
-	 cache : false,
-	 url : "../../base3.php",
-	 success : function(response){
-	 var rObject_t = JSON.parse(response);
-	 // var  rObject_t = eval('(' + response + ')');
-	 var myJSONText = JSON.stringify(rObject_t);
-	 // 	alert  ( myJSONText);
-	 }
-	 }); */
+	type : "GET",
+	cache : false,
+	url : "../../base3.php",
+	success : function(response){
+	var rObject_t = JSON.parse(response);
+	// var  rObject_t = eval('(' + response + ')');
+	var myJSONText = JSON.stringify(rObject_t);
+	// 	alert  ( myJSONText);
+	}
+	}); */
 
 	$("#autorization-dialog").dialog({
 		title: 'Авторизация',
@@ -311,7 +408,7 @@ $(document).ready(function(){
 			}
 		}
 	});
-		$('#enter_priv').click(function(){
+	$('#enter_priv').click(function(){
 		$('#autorization-dialog').dialog('open');
 	});
 	$("#tabs").tabs();
@@ -388,7 +485,7 @@ $(document).ready(function(){
 		}
 		return false;
 	});
-	 $(".agreement").live('click', function(){
+	$(".agreement").live('click', function(){
 		if ($("#tab_agreement").length === 0) {
 			$("#tabs").tabs("add", '#tab_agreement', 'Пользовательское соглашение');
 			$("#tab_agreement").css({
@@ -426,7 +523,7 @@ $(document).ready(function(){
 });
 function logOut(){
 	$.post("../_scriptsphp/logout.php");
-//	$.cookie("inquery", null);
+	//	$.cookie("inquery", null);
 	//window.location.reload();
 	window.location.href = "/index.php";	
 }
@@ -491,27 +588,27 @@ function setCount(type, room, count){
 				$('#count_dom').text(count);
 				break;
 			case 2:
-				switch (room) {
-					case 0:
-						$('#count_0').text(count);
-						break;
-					case 1:
-						$('#count_1').text(count);
-						break;
-					case 2:
-						$('#count_2').text(count);
-						break;
-					case 3:
-						$('#count_3').text(count);
-						break;
-					case 4:
-						$('#count_4').text(count);
-						break;
-					default:
-						$('#count_all_fl').text(count);
-						break;
-				}
-				break;
+			switch (room) {
+				case 0:
+					$('#count_0').text(count);
+					break;
+				case 1:
+					$('#count_1').text(count);
+					break;
+				case 2:
+					$('#count_2').text(count);
+					break;
+				case 3:
+					$('#count_3').text(count);
+					break;
+				case 4:
+					$('#count_4').text(count);
+					break;
+				default:
+					$('#count_all_fl').text(count);
+					break;
+			}
+			break;
 			case 3:
 				$('#count_str').text(count);
 				break;
@@ -545,9 +642,15 @@ function getCountPrivate(){
 	$.getJSON("_scriptsphp/getCountPrivate.php", function(json){
 		$("#count_sa").text(json.sale.actual[0]);
 		$("#count_so").text(json.sale.outdated[0]);
+		$("#count_sn").text(json.sale.outnow[0]);
 		$("#count_exa").text(json.exchange.actual[0]);
 		$("#count_exo").text(json.exchange.outdated[0]);
-		});
+		if(json.claim.actual[0] === "0"){
+			$("#count_ca").text(json.claim.actual[0]);
+		} else {
+			$("#count_ca").html('<img style="" src="_images/flag.png" alt="" />');
+		}
+	});
 }
 
 function autoIframe(frameId){
@@ -568,7 +671,7 @@ function removeMessageBox(){
 };
 function removeMessageBoxforElement(element){
 	setTimeout(function () {
-	  $(element).fadeOut(10000).remove();
+		$(element).fadeOut(10000).remove();
 	}, 5000);
 };
 function closeTabOnTimeout(){
@@ -580,35 +683,176 @@ function closeTabOnTimeout(){
 	}, 5000);
 };
 function show_ladvice_list()
-			{
-				$.ajax({
-					url: "../legaladvice/onmainlist.php",
-					cache: false,
-					success: function(html){
-						$("#advice").html(html);
-								$('.advice_digest').mTruncate({
+{
+	$.ajax({
+		url: "../legaladvice/onmainlist.php",
+		cache: false,
+		success: function(html){
+			$("#advice").html(html);
+			$('.advice_digest').mTruncate({
+				length: 65,
+				minTrail: 10,
+				ellipsisText: "..."
+			});
+		}
+	});			
+};
+function show_ipoteka_list()
+{
+	$.ajax({
+		url: "../legaladvice/onmainlist.php",
+		cache: false,
+		success: function(html){
+			$("#anons_ipoteka").html(html);
+			$('.advice_digest').mTruncate({
+				length: 65,
+				minTrail: 10,
+				ellipsisText: "..."
+			});
+		}
+	});			
+};
+function setHotAffair(){
+	$.getJSON("_scriptsphp/hot_advert.php", function(json){
+		var dataArray = json.data;
+		var tapeView ='<h2>Горячие предложения</h2>';
+		tapeView +='<div style="text-align:center;margin:auto;width:210px"><a href="#"><span style="float:left;text-decoration:underline;" id="prev">&lt;&lt; до</span></a>'+
+		'<a href="#"><span style="float:right;text-decoration:underline;" id="next">после &gt;&gt;</span></a></div>';
+
+		//		tapeView +='<img class="prev" src="_images/arrow_up_redmond.png" alt="next" width="189" height="31" />';
+		tapeView +='<div id="slideshow" style="clear: both;">'; //sections
+		tapeView += '<ul id="cicle">';
+		//		tapeView += '<ul>';
+		/*----------------------*/
+		/*tapeView += '<ul><li><div class="hot_list"><span id="fc_' + data['flats_cod']+ '" style="display:none"/><div style="color:#000066;">' + o_head +'</div>' ;
+		tapeView +=	(( data['foto'] != 0) ? '<img src="base5.php?id_image=' + data['flats_cod'] + '&amp;category=0&amp;image=0&amp;min=1&amp;percent=0.2" alt="" />':'');
+		tapeView += (( data["flats_comments"] == "" || data["flats_comments"] == null) ? '' : '<span class="comments" style="display:block; margin-top: 3px; text-align: left;">' + data["flats_comments"] + '</span>');
+		tapeView += '<span class="lentprice" style="display:block; color:#5D2E35;font-size: 1.2em; margin-top: 3px;">' + number_format(data["flats_price"], 0, '.', ' ') + ' руб.</span></div>';
+		var hot_type_image;
+		switch(data["hot_affair_type"]){
+		case '1': hot_type_image = '<img class="hot_type" src="_images/i_hot_affair/hot_type_price.png" alt="" />';
+		break;
+		case '2': hot_type_image = '<img class="hot_type" src="_images/i_hot_affair/hot_type_sale.png" alt="" />';
+		break;
+		case '3': hot_type_image = '<img class="hot_type" src="_images/i_hot_affair/hot_type_ready.png" alt="" />';
+		break;
+		case '4': hot_type_image = '<img class="hot_type" src="_images/i_hot_affair/hot_type_exclusive.png" alt="" />';
+		break;
+		default:
+		hot_type_image='';
+		break;
+		}
+		tapeView += hot_type_image + '</li>';			*/
+
+		/*----------------*/
+		$.each(dataArray, function(index, data){
+			var o_head = objectHead(data['type_s'], data['room_cod'], data['city_name'], data['region_name'], data['street_name']);
+			tapeView += '<li style="display: inline; float: left; cursor: pointer;">';
+			tapeView += '<div class="lucky-hot">';
+			tapeView += '<div class="hot_list"><span id="fc_' + data['flats_cod']+ '" style="display:none"></span><div style="color:#000066;">' + o_head +'</div>' ;
+			tapeView += (( data['foto'] != 0) ? '<div style="margin-top:3px;"><img src="base5.php?id_image='+ data['flats_cod'] + '&amp;category=0&amp;image=0&amp;min=1&amp;percent=0.3" alt="" /></div>':'');
+			tapeView += ( data["flats_comments"] == "" || data["flats_comments"] == null) ? '' :  '<span class="comments" style="display:block; margin-top: 3px; text-align: left;">' + data["flats_comments"] + '</span>';
+			tapeView += '<span class="lentprice" style="display:block; color:#5D2E35;font-size: 1em; margin-top: 3px;">' + number_format(data["flats_price"], 0, '.', ' ') + ' руб.</span></div>';
+			var hot_type_image;
+			switch(data["hot_affair_type"]){
+				case '1': hot_type_image = '<img class="hot_type" src="_images/i_hot_affair/hot_type_price.png" alt="" />';
+					break;
+				case '2': hot_type_image = '<img class="hot_type" src="_images/i_hot_affair/hot_type_sale.png" alt="" />';
+					break;
+				case '3': hot_type_image = '<img class="hot_type" src="_images/i_hot_affair/hot_type_ready.png" alt="" />';
+					break;
+				case '4': hot_type_image = '<img class="hot_type" src="_images/i_hot_affair/hot_type_exclusive.png" alt="" />';
+					break;
+				default:
+					hot_type_image='';
+					break;
+			}
+			tapeView += hot_type_image + '</li>';
+		});
+		tapeView += '</ul></div>';
+		//		tapeView += '</ul></div><img class="next" src="_images/arrow_down_redmond.png" alt="next" width="189" height="31" />';
+
+		$("#is-hot-test").html(tapeView);
+		$('.comments').mTruncate({
 			length: 65,
-			minTrail: 10,
+			minTrail: 5,
 			ellipsisText: "..."
 		});
-					}
-				});			
-			};
+		$("li").find(".hot_type").addClass("stamp")
+		$('#cicle').cycle({
+			fx:      'turnDown',
+			prev:    '#prev',
+			next:    '#next',
+			delay:   -4000
+		});
+
+
+		/*$("#hot-slideshow").serialScroll({
+		target:'#slideshow',
+		items:'li', // Selector to the items ( relative to the matched elements, '#sections' in this case )
+		prev:'a.prev',// Selector to the 'prev' button (absolute!, meaning it's relative to the document)
+		next:'a.next',// Selector to the 'next' button (absolute too)
+		axis:'xy',// The default is 'y' scroll on both ways
+		duration:700,// Length of the animation (if you scroll 2 axes and use queue, then each axis take half this time)
+		force:true, // Force a scroll to the element specified by 'start' (some browsers don't reset on refreshes)
+
+		//queue:false,// We scroll on both axes, scroll both at the same time.
+		//event:'click',// On which event to react (click is the default, you probably won't need to specify it)
+		//stop:false,// Each click will stop any previous animations of the target. (false by default)
+		//lock:true, // Ignore events if already animating (true by default)		
+		start: 0, // On which element (index) to begin ( 0 is the default, redundant in this case )		
+		cycle:true,// Cycle endlessly ( constant velocity, true is the default )
+		step:3, // How many items to scroll each time ( 1 is the default, no need to specify )
+		//jump:false, // If true, items become clickable (or w/e 'event' is, and when activated, the pane scrolls to them)
+		//lazy:false,// (default) if true, the plugin looks for the items on each event(allows AJAX or JS content, or reordering)
+		interval:10000 // It's the number of milliseconds to automatically go to the next
+		//constant:true, // constant speed
+		});*/
+
+	});
+}
+function setIpotekaAffair(){
+	$.getJSON("_scriptsphp/ipoteka_advert.php", function(json){
+		var dataArray = json.data;
+		var tapeView ='<h2>Подходят под ипотеку</h2><div class="sections"><ul>';
+		$.each(dataArray, function(index, data){
+			var o_head = objectHead(data['type_s'], data['room_cod'], data['city_name'], data['region_name'], data['street_name']);
+			tapeView += '<li><div class="om_mortgage_list"><span id="fc_'+ data['flats_cod']+'" style="display:none"/>' ;
+			tapeView +=	(( data['foto'] != 0) ? '<div style="margin-top:3px;"><img src="base5.php?id_image='+ data['flats_cod'] + 
+			'&amp;category=0&amp;image=0&amp;min=1&amp;percent=0.071" style="float: left; padding: 0 10px 10px 0;" alt="" /><span style="color:#000066;">' + o_head +'</span></div>':'');
+			//			tapeView += (( data["flats_comments"] == "" || data["flats_comments"] == null) ? '' : '<span class="comments" style="display:block; margin-top: 3px; text-align: left;">' + data["flats_comments"] + '</span>');
+			tapeView += '<span class="lentprice" style="display:block; color:#5D2E35;font-size: 1.2em; margin-top: 3px;">' + number_format(data["flats_price"], 0, '.', ' ') + ' руб.</span></div>';
+			tapeView += '</li>';
+		});
+		tapeView += '</ul></div>';
+
+		$("#announce_ipoteka").html(tapeView);
+		$(".sections > ul > li:lt(3)").css({
+			"border-bottom":"1px dashed #CCC"
+		});
+
+		$('.comments').mTruncate({
+			length: 65,
+			minTrail: 5,
+			ellipsisText: "..."
+		});
+	});
+}
 /*function pageload(hash) {
-		// alert("pageload: " + hash);
-		// hash doesn't contain the first # character.
-		if(hash) {
-			// restore ajax loaded state
-			if($.browser.msie) {
-				// jquery's $.load() function does't work when hash include special characters like åäö.
-				hash = encodeURIComponent(hash);
-			}
-			//$("#load").load(hash + ".html");
-		} else {
-			// start page
-			//$("#load").empty();
-		}
-	};*/
+// alert("pageload: " + hash);
+// hash doesn't contain the first # character.
+if(hash) {
+// restore ajax loaded state
+if($.browser.msie) {
+// jquery's $.load() function does't work when hash include special characters like åäö.
+hash = encodeURIComponent(hash);
+}
+//$("#load").load(hash + ".html");
+} else {
+// start page
+//$("#load").empty();
+}
+};*/
 function PWD() {
 	var m;
 	var a;

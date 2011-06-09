@@ -2,9 +2,9 @@
 require_once('r_conn.php');
 include ('services.php');
 include('./rdate/rdate.php');
-$counted_query = "SELECT COUNT(*) as result FROM tbl_flats WHERE sale = 0 And DATEDIFF(NOW(), last_update) < 14". 
-	" UNION ALL SELECT MIN(flats_price) as result FROM tbl_flats WHERE sale = 0 And DATEDIFF(NOW(), last_update) < 14". 
-	" UNION ALL SELECT MAX(flats_price) as result FROM tbl_flats WHERE sale = 0 And DATEDIFF(NOW(), last_update) < 14".
+$counted_query = "SELECT COUNT(*) as result FROM tbl_flats WHERE sale = 0 And DATEDIFF(NOW(), last_update) <= 14". 
+	" UNION ALL SELECT MIN(flats_price) as result FROM tbl_flats WHERE sale = 0 And DATEDIFF(NOW(), last_update) <= 14". 
+	" UNION ALL SELECT MAX(flats_price) as result FROM tbl_flats WHERE sale = 0 And DATEDIFF(NOW(), last_update) <= 14".
 	" UNION ALL SELECT UNIX_TIMESTAMP(MAX(last_update)) as result FROM tbl_flats WHERE sale = 0";
 $result = mysql_query($counted_query) or die ("Couldn t execute query.".mysql_error());
 $count_array = array();

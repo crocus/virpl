@@ -11,22 +11,22 @@ $percent = $_GET['percent'];
 if(!$percent) $percent = 0.2;
 $destination = (isset($_GET['dest']) && strval($_GET['dest'] && !empty($_GET['dest']))) ? htmlspecialchars(trim(rtrim($_GET['dest']))) : "browser";
 switch ( $category ) {
-    case 0:
+	case 0:
 //      $SQL ="SELECT UUID FROM tbl_flats WHERE flats_cod ={$id_image}";	
 $SQL ="SELECT f.UUID, na.Name_Node AS agency_name FROM tbl_flats f 
 LEFT JOIN node n ON f.agent_cod = n.UUID 
 LEFT JOIN node na ON na.participants_id = n.parents_id 
 WHERE flats_cod ={$id_image}";    
-        break;
-    case 1:
-      $SQL ="SELECT e.UUID, na.Name_Node as agency_name FROM tbl_exchange e 
-      LEFT JOIN node n ON e.agent_cod = n.UUID 
+		break;
+	case 1:
+	  $SQL ="SELECT e.UUID, na.Name_Node as agency_name FROM tbl_exchange e 
+	  LEFT JOIN node n ON e.agent_cod = n.UUID 
 LEFT JOIN node na ON na.participants_id = n.parents_id  
 WHERE Id ={$id_image}";
-         break;
-    default : 
+		 break;
+	default : 
 	echo 'Error';
-        break;
+		break;
 }	
 $result = mysql_query( $SQL ) or die("Couldn t execute query.".mysql_error());
 $row = mysql_fetch_assoc($result);
@@ -41,7 +41,7 @@ $image_array = array();
 $i=0;
 while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
 $image_array[$i] = $row[content];
-    $i++;
+	$i++;
 }
 //print_r($image_array);
 if(!empty($image_array[$image])){
@@ -89,13 +89,11 @@ $thumb = imagecreatetruecolor($newwidth, $newheight);
 imagecopyresized($thumb, $im, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 $im = $thumb;
 } else {
-$sx = imagesx($t_stamp);
+/*$sx = imagesx($t_stamp);
 $sy = imagesy($t_stamp);
 imagefilter($im, IMG_FILTER_BRIGHTNESS,23);
 imagecopymerge($im, $t_stamp, imagesx($im) - $sx, imagesy($im) - $sy, 0, 0, imagesx($t_stamp), imagesy($t_stamp), 15);
-//imagefilter($im, IMG_FILTER_COLORIZE,255,255,255,127);
-imagefilter($im, IMG_FILTER_CONTRAST,-8);
-//imagefilter($im, IMG_FILTER_PIXELATE, 100, true);
+imagefilter($im, IMG_FILTER_CONTRAST,-8);*/
 }
 /*************************************/
 if ($im !== false) {
@@ -115,10 +113,10 @@ header('Pragma: no-cache');*/
 		}
 imagedestroy($im);
 }else {
-    echo 'An error occurred.';
+	echo 'An error occurred.';
 }
 } else {
-    exit;
+	exit;
 }
 ob_end_flush();
 ?>

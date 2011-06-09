@@ -39,41 +39,41 @@
 	<body>
 		<noscript>В Вашем браузере выключена поддержка JavaScript, пожалуйста включите для корректной работы сайта.</noscript>
 		<script type="text/javascript" src="../_js/script/preloader.js"></script>
-		<div style="">
 		<div id="header">
-			<div id="logoslide" style="vertical-align:middle">
-				<div> <a href="http://www.foliant.net.ru"> <img src="_images/logo_fol_m.jpg" alt="" /></a></div>
-				<div><img src="_images/aliance_logo.jpeg" alt="" /> </div>
-				<div><a href="http://www.avega.vl.ru"><img src="_images/avega_logo.gif" alt="" /></a></div>
-				<div><a href="http://www.omegatd.ru"><img src="_images/omega_logo.jpg" alt="" /></a></div>
-			</div>
-			<div id="site_name">Владивостокский<br />
-				Информационный<br />
-				Риэлторский<br />
-				ПортаЛ
-			<span style="white-space:nowrap"></span> </div>
-			<div id="accsess">
-				<div style="text-align: right;"><a href="#" id="enter_priv" style="white-space:nowrap;"> <span style="font-size:1.3em">Вход в личный кабинет</span></a></div>
-				<!--<a href="#" id="registr">Регистрация</a><a href="#" id="remember" style="padding-left: 45px; white-space:nowrap;">Забыли пароль?</a>-->
-				<div id="header-announcement">
-					<b>Сегодня на сайте</b>
-					<br/>
-					Объявлений о продаже - <span id="anonce_total"></span>
-					<br/>
-					Минимальная стоимость - <span id="anonce_min"></span>&nbsp;руб.
-					<br/>
-					Максимальная стоимость - <span id="anonce_max"></span>&nbsp;руб.
-					<br/>
-					Информация обновлена <span id="anonce_tleft"></span>&nbsp;назад
+			<div>
+				<div id="logoslide" style="vertical-align:middle;">
+					<div> <a href="http://www.foliant.net.ru"> <img src="_images/logo_fol_m.jpg" alt="" /></a></div>
+					<div><img src="_images/aliance_logo.jpeg" alt="" /> </div>
+					<div><a href="http://www.avega.vl.ru"><img src="_images/avega_logo.gif" alt="" /></a></div>
+					<div style="border: 2px solid #3A77BE;padding: 5px;"><a href="http://www.omegatd.ru"><img src="_images/omega_logo.png" width="250px" height="57px" alt="" /></a></div>
+					<div><a href="http://www.industry-r.ru"><img src="_images/industru-logo.png" width="280px" height="71px" alt="" /></a></div>
+					<!--<img src="_images/moy-poverenuy.jpg" width="133px" height="100px" alt="" style="display:block; margin:0 auto; vertical-align:middle;"/>-->
+				</div>			
+				<div id="site_name">Владивостокский Информационный Риэлторский ПортаЛ
 				</div>
-				<div id="autorization-dialog" title="Авторизация">
-					<form id="login" method="post" action="">
-						<label for="name" class="label">Логин:</label>
-						<input type="text" name="user_name" id="name" class="input_a_form"/>
+				<div id="accsess">
+					<div style="text-align: right;"><a href="#" id="enter_priv" style="white-space:nowrap;"> <span style="font-size:1.3em">Вход в личный кабинет</span></a><span style="margin-left: 20px;"><a href="#" id="registr">Регистрация</a></span></div>
+					<!--<a href="#" id="remember" style="padding-left: 45px; white-space:nowrap;">Забыли пароль?</a>-->
+					<div id="header-announcement">
+						<b>Сегодня на сайте</b>
 						<br/>
-						<label for="password" class="label">Пароль:</label>
-						<input type="password" name="user_pass" id="password" class="input_a_form" value=""/>
-					</form>
+						Объявлений о продаже - <span id="anonce_total"></span>
+						<br/>
+						Минимальная стоимость - <span id="anonce_min"></span>&nbsp;руб.
+						<br/>
+						Максимальная стоимость - <span id="anonce_max"></span>&nbsp;руб.
+						<br/>
+						Информация обновлена <span id="anonce_tleft"></span>&nbsp;назад
+					</div>
+					<div id="autorization-dialog" title="Авторизация">
+						<form id="login" method="post" action="">
+							<label for="name" class="label">Логин:</label>
+							<input type="text" name="user_name" id="name" class="input_a_form"/>
+							<br/>
+							<label for="password" class="label">Пароль:</label>
+							<input type="password" name="user_pass" id="password" class="input_a_form" value=""/>
+						</form>
+					</div>
 				</div>
 			</div>
 			<div id="myslidemenu" class="jqueryslidemenu">
@@ -90,7 +90,13 @@
 							<li><a href="#add_exchange" id="add_exchange" rel="history">Обмен</a></li>
 						</ul>
 					</li>
-					<li><a href="#" class="tolawyer">Вопросы к юристу</a></li>
+					<li><a href="#">Вопросы к специалистам</a>
+						<ul>
+							<li><a href="#" class="tolawyer">К юристам</a></li>
+							<li><a href="#" class="toreappraisers">К оценщикам</a></li>
+						</ul>
+					</li>
+					<li><a href="#" class="toBanks">Новости от банков-партнеров</a></li>
 					<!--<li><a href="#">Вопросы и ответы</a></li>-->
 				</ul>
 				<br style="clear:left;" />
@@ -99,6 +105,8 @@
 		</div>
 		<div id="container">
 			<div id="left">
+				<div id="is-hot-test" class="on-main-block">				
+				</div>
 				<div id="leftmenu">
 					<h2><a href="#" id="inhabitad"><span style=" font-size:1.1em">Жилая недвижимость</span></a></h2>
 					<div style="margin:0; padding:10px;">
@@ -133,40 +141,28 @@
 					</div>
 					<h2><a href="#" id="s_exchanges">Обмены</a></h2>
 					<div></div>
-					<h2><a href="#" id="link_ext_seach">Расширенный поиск</a></h2>
-					<div></div>
+					<!--<h2><a href="#" id="link_ext_seach">Расширенный поиск</a></h2>
+					<div></div>-->
 				</div>
-			</div>
-			<div id="right">
-				<div id='foo' class="carousel">
-					<ul>
-						<li>
-							<img src="http://farm4.static.flickr.com/3639/3319814586_dd9c1141dd.jpg?v=0" alt="example pic flicker 2" width="500" height="335" /> <cite><a class="image_link" href="/creativecommons/"><img width="16" height="16" class="trans_png" alt="Licence Creative Commons" src="http://l.yimg.com/g/images/home_cc.png"/></a> By <a href="http://www.flickr.com/photos/tanchristianr/">Don Takz</a></cite>
-						</li>
-						<li>
-							<img src="http://l.yimg.com/g/images/home_photo_notsogoodphotography.jpg" alt="example pic flicker 1" width="500" height="335" /> <cite><a href="http://www.flickr.com/creativecommons/"><img width="16" height="16" class="trans_png" alt="Licence Creative Commons" src="http://l.yimg.com/g/images/home_cc.png"/></a> Par <a href="http://www.flickr.com/photos/notsogoodphotography/">notsogoodphotography</a></cite>
-						</li>
-						<li>
-							<img src="http://l.yimg.com/g/images/home_photo_junku.jpg" alt="example pic flicker 2" width="500" height="335" /> <cite><a href="http://www.flickr.com/creativecommons/"><img width="16" height="16" class="trans_png" alt="Licence Creative Commons" src="http://l.yimg.com/g/images/home_cc.png"/></a> By <a href="http://www.flickr.com/photos/junku-newcleus/">junku-newcleus</a></cite>
-						</li>
-						<li>
-							<img src="http://l.yimg.com/g/images/home_photo_pmorgan.jpg" alt="example pic flicker 2" width="500" height="335" /> <cite><a class="image_link" href="http://www.flickr.com/creativecommons/"><img width="16" height="16" class="trans_png" alt="Licence Creative Commons" src="http://l.yimg.com/g/images/home_cc.png"/></a> By <a href="http://www.flickr.com/photos/pmorgan/">pmorgan</a></cite>
-						</li>
-					</ul>
-				</div>	
-				<div id="accordion">
+				<div id="announce_ipoteka" class="on-main-block">				
+				</div>
+				<div class="on-main-block">			
 					<h2>Вопросы юристам</h2>
 					<div class="pane">
-						<ul id="advice"></ul>
-						<p style="margin: 0 5px 5px 5px; font-size:0.8em;"><a href="#" class="tolawyer">читать >></a></p>		
+						<ul id="advice"></ul>	
+						<p style="margin: 0 5px 5px 5px; font-size:0.8em;"><a href="#" class="tolawyer">читать >></a></p>					
+					</div>				
+				</div>
+				<div id="om_partners" class="on-main-block">
+					<h2>Наши партнеры</h2>
+					<div id="dvbank-banner">
+						<a href="http://www.dvbank.ru/retail/credits/mortgage/">
+							<img src="_images/ipoteka_2.gif" title="" alt="" width="185" style="padding: 0 5px 10px;"/></a>
 					</div>
-					<h2>Новости</h2>
-					<div class="pane"><ul>
-							<li>22 августа 2009<br />
-								Большому кораблю - большое плавание.
-							</li>
-						</ul><p></p></div>
-					<h2>Реклама партнеров</h2>
+					<div id="pskb-banner" style="text-align: center;">
+						<a href="http://pskb.com/ru/private/credit/mortgage/?utm_source=viprl&utm_medium=banner&utm_campaign=ipoteka">
+							<img src="_images/pskb_185x275_02.gif" title="" alt="" width="185" style="cursor:pointer; padding: 0 5px 10px;"/></a>
+					</div>
 					<div id="lawers-banner">
 						<img class="tolawyer" src="_images/kol1.jpg" title="" alt="" width="185" style="cursor:pointer; padding: 0 5px 10px;"/>
 					</div>
@@ -177,32 +173,22 @@
 					<ul>
 						<li><a href="#objects">Продажа</a></li>
 					</ul>
-					<div id="objects"> <div style="padding:5px 0 10px 10px;">В виде:<a href="#" id="view_switch" title="Представление" style =" padding-left: 10px;">Таблицы/Ленты</a></div>
+					<div id="objects"> 
+						<div style="padding:5px 0 10px 10px;">В виде:<a href="#" id="view_switch" title="Представление" style =" padding-left: 10px;">Таблицы/Ленты</a></div>
+						<div id="b_search" class="button-styled" style="margin: 5px 0 15px 10px; width: 200px; height: 50px; font-size: 16pt;"><span style="display:block;text-align: center; padding-top:15px;">Поиск квартир</span></div>
+						<div id="d_search" style="display: none"></div>
 						<div id="lenta" class="hide">
-							<iframe id="v_lenta" src="v_lenta.php" marginwidth="0" marginheight="0" style="width:100%;height:950px;overflow:hidden; border:0;" frameborder="0" scrolling="no"> </iframe>
+							<iframe id="v_lenta" src="v_lenta.php" marginwidth="0" marginheight="0" style="width:100%;height:1800px;overflow:hidden; border:0;" frameborder="0" scrolling="no"> </iframe>
 						</div>
 						<div id="table" class="show">
-							<iframe id="v_table" src="v_table.php" style="width:100%;height:800px;overflow:hidden; border:0;" frameborder="0" scrolling="no"> </iframe>
+							<iframe id="v_table" src="v_table.php" style="width:100%;height:1650px;overflow:hidden; border:0;" frameborder="0" scrolling="no"> </iframe>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div id="footer">
-				<p><div class="first" style="float: left; padding-left: 12px; font-size: .8em; text-transform: uppercase;"><span>Размещение рекламы — тел. +7 (4232) 441806 </span></div><div id="copyright" class="first" style="float: right; padding-right: 12px;"><span> &copy; 2009 ООО &quot;Фолиант&quot;</span><br />
-						<!--LiveInternet counter-->
-						<script type="text/javascript">
-							<!--
-							document.write("<a href='http://www.liveinternet.ru/click' "+
-							"target=_blank><img src='http://counter.yadro.ru/hit?t25.3;r"+
-							escape(document.referrer)+((typeof(screen)=="undefined")?"":
-							";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
-							screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
-							";"+Math.random()+"' alt='' title='LiveInternet: показано число посетителей за"+
-							" сегодня' "+"border='0' width='88' height='15'><\/a>")
-							//--> 
-						</script>
-						<!--/LiveInternet-->
-				</div> </p>
+				<p><div class="first" style="float: left; padding-left: 12px; font-size: .8em; text-transform: uppercase;">Размещение рекламы — тел. +7 (4232) 441806</div>
+				<div id="copyright" class="first" style="float: right; padding-right: 12px;">&copy;2009-2010 ООО &quot;Фолиант&quot;</div></p>
 				<!--<div>Контакты: <a href="skype:crocus13?call" onload="return skypeCheck()"><img src="http://mystatus.skype.com/smallclassic/crocus13" style="border: none;" width="114" height="20" alt="Мой статус" /></a></div>
 				<br/><img src="http://web.icq.com/whitepages/online?icq=261428978&img=5" alt="Статус" />
 				</div>-->
@@ -217,10 +203,22 @@
 			try {
 				var pageTracker = _gat._getTracker("UA-10583093-2");
 				pageTracker._trackPageview();
-			} catch(err) {}</script>    
+			} catch(err) {}</script>  
+		<!--LiveInternet counter-->
+		<script type="text/javascript">
+			<!--
+			document.write("<a href='http://www.liveinternet.ru/click' "+
+			"target=_blank><img src='http://counter.yadro.ru/hit?t25.3;r"+
+			escape(document.referrer)+((typeof(screen)=="undefined")?"":
+			";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+			screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+			";"+Math.random()+"' alt='' title='LiveInternet: показано число посетителей за"+
+			" сегодня' "+"border='0' width='88' height='15'><\/a>")
+			//--> 
+		</script>
+		<!--/LiveInternet-->  
 	</body>
 </html>
-<script type="text/javascript" src="../_js/script/common.js"/></script>
- <script type="text/javascript" language="JavaScript" src="http://reformal.ru/tab.js?title=%C2%EB%E0%E4%E8%E2%EE%F1%F2%EE%EA%F1%EA%E8%E9+%C8%ED%F4%EE%F0%EC%E0%F6%E8%EE%ED%ED%FB%E9+%D0%E8%FD%EB%F2%EE%F0%F1%EA%E8%E9+%CF%EE%F0%F2%E0%EB&domain=virpl&color=949088&align=right&charset=utf-8&ltitle=&lfont=&lsize=&waction=0&regime=0"></script>
-<!--<script type="text/javascript" src="http://download.skype.com/share/skypebuttons/js/skypeCheck.js"></script>-->
+<script type="text/javascript" src="../_js/script/common.js"></script>
+<!--<script type="text/javascript" language="JavaScript" src="http://reformal.ru/tab.js?title=%C2%EB%E0%E4%E8%E2%EE%F1%F2%EE%EA%F1%EA%E8%E9+%C8%ED%F4%EE%F0%EC%E0%F6%E8%EE%ED%ED%FB%E9+%D0%E8%FD%EB%F2%EE%F0%F1%EA%E8%E9+%CF%EE%F0%F2%E0%EB&domain=virpl&color=949088&align=right&charset=utf-8&ltitle=&lfont=&lsize=&waction=0&regime=0"></script>-->
 <?php ob_end_flush();?> 

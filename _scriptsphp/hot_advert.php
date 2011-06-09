@@ -3,7 +3,9 @@
 	include('services.php');
 	require_once('session.inc');
 	session_start();						
-	$query_detail = "SELECT f.flats_cod, f.UUID, DATE_FORMAT(f.flats_date, '%a %b %d %Y %H:%i:%s') as flats_date, f.So, f.Sz, f.Sk, f.flats_price, f.kind_calc, f.foto, f.flats_tel, f.flats_floor, f.flats_floorest, f.flats_comments, pr.project_name, t.type_s, r.room_cod, l.sale_name, c.cond_name, i.side_name, ci.city_name, a.region_name, s.street_name, w.wc_name, b.balcon_name, m.material_name, p.plan_name, f.Contact, f.Source, f.Treated, n.Name_Node as agent_name, na.Name_Node as agency_name, tp.phon, IF (na.Mail IS NULL, '', na.Mail) as agency_mail  FROM tbl_flats f
+	$query_detail = "SELECT f.flats_cod, f.UUID, DATE_FORMAT(f.flats_date, '%a %b %d %Y %H:%i:%s') as flats_date, f.So, f.Sz, f.Sk, f.flats_price, f.kind_calc,
+	f.foto, f.flats_tel, f.flats_floor, f.flats_floorest, f.flats_comments, pr.project_name, t.type_s, r.room_cod, l.sale_name, c.cond_name, i.side_name,
+	ci.city_name, a.region_name, s.street_name, w.wc_name, b.balcon_name, m.material_name, p.plan_name, f.Contact, f.Source, f.hot_affair_type, f.Treated, n.Name_Node as agent_name, na.Name_Node as agency_name, tp.phon, IF (na.Mail IS NULL, '', na.Mail) as agency_mail  FROM tbl_flats f
 	LEFT JOIN tbl_type t ON f.type_cod = t.type_cod 
 	LEFT JOIN tbl_room r ON f.room_cod = r.room_cod 
 	LEFT JOIN tbl_street s ON f.street_cod = s.street_cod  
@@ -24,7 +26,7 @@
 	FROM tbl_telag
 	GROUP BY agency_name) AS tp
 	ON na.Name_Node = tp.agency_name 
-	WHERE f.sale=0 AND f.hot_advert=1";
+	WHERE f.sale=0 AND f.flats_comments IS NOT NULL AND f.foto!=0 AND f.hot_affair=1";
 	$result = mysql_query($query_detail, $realtorplus) or die(mysql_error());
 	$count_array = array();
 	$i=0;

@@ -25,7 +25,7 @@ tfoot{text-align: center; vertical-align: baseline;}
 
 .contact{border: 1px solid #AAA; float: right; margin-left: -240px; width: 240px;}
 .color-row{
-background: #FCD9BA;
+	background: #FCD9BA;
 }
 
 
@@ -65,6 +65,7 @@ background: #FCD9BA;
 .lentbody{color: #444; font-family: arial, helvetica, verdana, sans-serif;}
 
 .lentheader{color: #000066; font-family: Verdana, Arial, Helvetica, sans-serif;}
+.lentheader:hover{color: #C00; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: underline;}
 
 .lentprice{color: #111; font-family: Arial, Verdana, Helvetica, sans-serif; font-weight: 200; white-space: nowrap;}
 .lentpricec{color:#4A4A4A; font-size:0.7em; font-family: Arial, Verdana, Helvetica, sans-serif; font-weight: 300; white-space: nowrap;}
@@ -76,8 +77,6 @@ background: #FCD9BA;
 .tabs-close-button{bottom: 10px; float: right; position: relative; right: 10px;}
 
 .textondiv{color: #333; font-family: helvetica, verdana, sans-serif; padding: 5px; white-space: pre-line;}
-
-.lentheader:hover{color: #C00; font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: underline;}
 
 .elemondiv {background-color: #ECECEC; border: 1px solid #333333;}
 
@@ -120,9 +119,9 @@ background: #FCD9BA;
 	-webkit-border-radius: 5px;
 	border: thin solid #F0F0F0;
 	margin:5px 0; 
-	padding: 15px;
+	padding: 10px;
 	background-color:#FAFAFA;
-/*	E3FFF4;*/
+	/*	E3FFF4;*/
 	clear:both;
 }
 .hide{
@@ -198,6 +197,30 @@ label.asblock {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 10pt;
 }
+div.inform{
+	border:1px solid red;
+	padding:5px;
+	width:253px;
+	-moz-border-radius-bottomleft:2px;
+	-moz-border-radius-bottomright:2px;
+	-moz-border-radius-topleft:2px;
+	-moz-border-radius-topright:2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+div.lucky-hot{
+	border:1px solid #C5DBEC;
+	width: 205px; 
+	height: 220px; 
+	padding: 10px; 
+	margin:0 5px 10px;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
 .trinity{
 	width:80px;
 	margin-right: 5px;
@@ -206,10 +229,43 @@ label.asblock {
 	width:125px;
 	margin-right: 5px;
 }
+.large{
+	width:400px;
+}
 .delineation, .divdelineation {
 	color:#555555;
 	font-size:8pt;
 	font-weight:normal;
+}
+.e-border {
+	border: 1px dotted red;
+}
+div.econtainer {
+	display: none;
+	font: bold 1.1em Helvetica, Arial, Verdana, sans-serif;
+	background-color: #FFFFBF;
+	border: 1px solid red;
+	margin: 5px;
+	padding: 5px;
+}
+div.econtainer ol li {
+	list-style-type: disc;
+	margin-left: 20px;
+}
+
+input.error, select.error, textarea.error {
+	border: 1px dotted red;
+}
+.form-container{
+	padding:5px;
+	border:1px solid #2E6E9E;
+	background-color: #EAF4FD;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
 }
 .files{
 	margin: 0px;
@@ -219,6 +275,10 @@ label.asblock {
 .files li{
 	display: inline;
 	list-style: none;
+}
+.inlinetext{
+	display:inline-block;
+	text-indent: 5px;	
 }
 .tooltip{
 	position:absolute;

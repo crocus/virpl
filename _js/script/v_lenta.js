@@ -101,7 +101,6 @@ $(document).ready(function(){
 		var cell = $(this);
 		setTimeout(function () {		
 			if (jQuery.active) {
-				//alert ('bla');
 				cell.parent("tr").block_row({  
 					message: '<img src="../_images/ajax-loader3.gif" class="loader" style="padding-left:5px;vertical-align: middle;" width="24" height="24" alt="" />',
 					css: { 
@@ -193,9 +192,18 @@ $(document).ready(function(){
 			//			window.location.reload();
 		});
 	});
+	$("#up-checked").click(function(){
+		var checkstate = getStateChekboxes();
+		$.get("../_scriptsphp/chb_statesess.php", {
+			checkstates: $.toJSON(checkstate),
+			action: "up_checked"
+		}, function(data){
+			window.location.reload();
+		});
+	});
 	$("#reload-uncheck").click(function(){
 		$.get("../_scriptsphp/trimming_checked.php", function(data){
-			window.location.reload();
+			window.location.reload(true);
 		});
 	});
 });

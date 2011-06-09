@@ -1,5 +1,5 @@
 /* root element for accordion. decorated with rounded borders and gradient background image */
-#accordion {
+.accordion {
 	/*background:#333 url(/img/global/gradient/h600.png) 0 0;*/
 	/*width: 300px;*/
 	padding:0.2em 0.2em 0;
@@ -13,7 +13,7 @@
 
 /* accordion header */
 /* accordion header */
-#accordion h2 {
+.accordion h2 {
 	background:#DFEFFC url(/_js/jquery/themes/redmond/images/ui-bg_glass_85_dfeffc_1x400.png) repeat-x scroll 50% 50%;
 	border:1px solid #C5DBEC;
 	color:#2E6E9E;
@@ -32,14 +32,14 @@
 }
 
 /* currently active header */
-#accordion h2.current {
+.accordion h2.current {
 	/*	cursor:default;*/
 	background-color:#fff;
 	color: #212121;
 }
 
 /* accordion pane */
-#accordion div.pane {
+.accordion div.pane {
 	/* border:1px solid #A9A9A9;*/
 	/* border-width:0 2px;*/
 	/*display:none;*/
@@ -56,7 +56,18 @@
 }
 #lawers-banner{
 	text-align: center;
-	background-color: #9E070E; 
+	/*background-color: #9E070E; 
+	margin: 5px 0 10px;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;*/
+}
+#dvbank-banner{
+	text-align: center;
+	background-color: #FFF; 
 	margin: 5px 0 10px;
 	-moz-border-radius-bottomleft:4px;
 	-moz-border-radius-bottomright:4px;
@@ -66,25 +77,26 @@
 	border-radius: 4px;
 }
 
-#accordion ul {
+.accordion ul {
 	margin: 5px 0 5px;
-	padding-left: 10px;
+	padding-left: 5px;
 	list-style-type: disc;
 }
-#accordion ul li{
+.accordion ul li{
 	margin: 0;
-	padding-left: 2px;
+	padding: 0 0 0 2px;
 }
-#accordion ul ul {
+.accordion ul ul {
 	margin: 0px;
 }
-#accordion ul ul li{		
+.accordion ul ul li{		
 	padding: 0 0 0 10px;
+	line-height: 1.6;
 	list-style-type: none;
 }
 
 /* a title inside pane */
-#accordion div.pane h3 {
+.accordion div.pane h3 {
 	font-weight:normal;
 	margin:0 0 -5px 0;
 	font-size:16px;

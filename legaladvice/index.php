@@ -14,8 +14,8 @@
 		<script type="text/javascript" src="../_js/jquery/external/cookie/jquery.cookie.min.js"></script>
 		<script type="text/javascript" src="../_js/plugins/jquery.validate.min.js"></script>
 		<script type="text/javascript" src="../_js/plugins/jquery.form.js"></script>
-		<script type="text/javascript" src="../legaladvice/jquery.faq.js"></script>-->	
-		<link href="../_style/test.css" rel="stylesheet" type="text/css"/>
+		<script type="text/javascript" src="../legaladvice/jquery.faq.js"></script>
+		<link href="../_style/style-color.css" rel="stylesheet" type="text/css"/>-->
 		<link type="text/css" rel="stylesheet" href="../legaladvice/jquery.faq.css" />
 	</head>
 	<body>

@@ -1,16 +1,60 @@
- .js{overflow:hidden;zoom:1;}
-.carousel,.carousel-wrap{margin:0;border:0;zoom:1;}
- .js .carousel-wrap{display:inline-block;vertical-align:middle;width:200px;margin:0 5px 15px;border:1px solid #4f4f4f;background:#1a1a1a;}
-div.carousel ul{margin:0;padding:0;zoom:1;}
- .js ul li{overflow:hidden;display:inline;float:left;width:200px;height:100px;text-align:center;}
-.carousel-control{overflow:hidden;display:inline-block;vertical-align:middle;width:40px;height:40px;cursor:pointer;line-height:999px;zoom:1;}
-.carousel-next{background:url(http://thomlx.free.fr/numerized/styles/images/buttons/next.png) 0 0 no-repeat;}
-.carousel-previous{background:url(http://thomlx.free.fr/numerized/styles/images/buttons/prev.png) 0 0 no-repeat;}
-.carousel-control:hover{-moz-opacity:.7;opacity:0.70;filter:alpha(opacity=70);}
-.disabled,.carousel .disabled:hover{-moz-opacity:.1;opacity:0.10;filter:alpha(opacity=10);cursor:default;}
-#foo.carousel {margin:0;padding:0;border:0;}
-#foo ul{padding:0;list-style:none;}
-#foo ul li{position:relative;width:500px;margin:0;}
-#foo ul li cite{position:absolute;bottom:3px;right:10px;line-height:19px;font-size:11px;}
-#foo ul li cite a img{vertical-align:middle;}
-#foo ul li cite a{color:#fff;text-decoration:none;}
+
+#foo{
+	position:relative;
+	margin-bottom:2px;
+	text-align: center;
+	font-size: 1em;
+	padding:0.2em 0.2em 0;
+	border:1px solid #A6C9E2;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+}
+.next, .prev{
+	margin: 3px auto;
+	cursor:pointer;
+}
+#foo h2{
+	background:#DFEFFC url(/_js/jquery/themes/redmond/images/ui-bg_glass_85_dfeffc_1x400.png) repeat-x scroll 50% 50%;
+	border:1px solid #C5DBEC;
+	color:#2E6E9E;
+	text-align: left;
+	margin:0;
+	padding:5px 15px;
+	font-weight:normal;
+	font-size: 1.2em;
+	font-family:Verdana,Arial,sans-serif;
+	cursor:pointer;
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-moz-border-radius-topleft:4px;
+	-moz-border-radius-topright:4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+#sections{
+	display: block;
+	width:190px;
+	height:200px;
+	margin: 0 auto; 
+	border:1px solid #C5DBEC;
+	overflow:hidden;
+	background-color:white;
+}
+
+#sections ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	width:3660px;
+}
+
+#sections ul li{
+	width: 170px;
+	float:left;
+	padding:5px 10px 0;
+	list-style: none;
+	cursor:pointer;
+}

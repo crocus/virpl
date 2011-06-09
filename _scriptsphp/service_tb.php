@@ -57,6 +57,9 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
 			$treated = "0";
 		} else {
 			$agent_cod = (isset($_POST['agent_cod']) && intval($_POST['agent_cod'] && !empty($_POST['agent_cod']))) ? $_POST['agent_cod'] : null;
+			if(isset($_POST['agent_phon']) && !empty($_POST['agent_phon'])) {
+				$show_phone = setParticipantsPhons($agent_cod, $_POST['agent_phon']);
+			}
 			$source = "1";
 			$treated = "1";
 		}
@@ -76,7 +79,8 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
 
 	}
 		}
-		$insertSQL = sprintf("INSERT INTO tbl_flats (UUID, sale_cod, type_cod, project_cod, So, Sz, Sk, plan_cod, wc_cod, balcon_cod, side_cod, cond_cod, flats_comments, agent_cod, flats_date, flats_tel, street_cod, flats_price, kind_calc, room_cod, flats_floor, flats_floorest, material_cod, Contact, Source, Treated, foto, last_update) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,  %s, Now(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, Now())", GetSQLValueString($uuid, "text"),
+		$insertSQL = sprintf("INSERT INTO tbl_flats (UUID, sale_cod, type_cod, project_cod, So, Sz, Sk, plan_cod, wc_cod, balcon_cod, side_cod, cond_cod, flats_comments, agent_cod, flats_date, flats_tel, ipo_ch, street_cod, building_id, flats_price, kind_calc, room_cod, flats_floor, flats_floorest, material_cod, show_phone, Contact, Source, Treated, foto, last_update) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,  %s, Now(), %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, Now())", 
+			GetSQLValueString($uuid, "text"),
 			GetSQLValueString(empty($_POST['sale_cod'])? "1": $_POST['sale_cod'], "int"),
 			GetSQLValueString(empty($_POST['type_cod'])?"1":$_POST['type_cod'], "int"),
 			GetSQLValueString(empty($_POST['project_cod'])?"1":$_POST['project_cod'], "int"),
@@ -91,13 +95,16 @@ if ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest') {
 			GetSQLValueString(empty($_POST['flats_comments'])? "" : htmlentities($_POST['flats_comments'], ENT_QUOTES, "UTF-8"), "text"),
 			GetSQLValueString($agent_cod, "text"),
 			GetSQLValueString(isset($_POST['flats_tel']) ? "true" : "", "defined", "1", "0"),
+			GetSQLValueString(isset($_POST['mortgage-chance']) ? "true" : "", "defined", "1", "0"),
 			GetSQLValueString(empty($_POST['street_cod'])?"1":$_POST['street_cod'], "int"),
+			GetSQLValueString(empty($_POST['building_id'])? "" : htmlentities($_POST['building_id'], ENT_QUOTES, "UTF-8"), "text"),
 			GetSQLValueString($price, "int"),
 			GetSQLValueString(is_null($currency) ? "0" : $currency, "int"),
 			GetSQLValueString(empty($_POST['room_cod'])?"0":$_POST['room_cod'], "int"),
 			GetSQLValueString(empty($_POST['flats_floor'])?"0":$_POST['flats_floor'], "int"),
 			GetSQLValueString(empty($_POST['flats_floorest'])?"0":$_POST['flats_floorest'], "int"),
 			GetSQLValueString(empty($_POST['material_cod'])?"1":$_POST['material_cod'], "int"),
+			GetSQLValueString(isset($show_phone) ? "true" : "", "defined","1","0"),
 			GetSQLValueString($contact, "text"),
 			GetSQLValueString($source, "int"),
 			GetSQLValueString($treated, "int"),

@@ -30,11 +30,11 @@
 				<label for="radGroupregform1">
 					<input id="company" name="radGroupregform1" type="radio" value="company" checked="checked" />Компания, состоящая из нескольких агентств.
 				</label>
-				<!--<br/>
-				<label>
-				<input id="agency" name="radGroupregform1" type="radio" value="agency" />Агентство, не имеющее подразделений.
-				</label>
 				<br/>
+				<label>
+					<input id="agency" name="radGroupregform1" type="radio" value="agency" />Агентство, не имеющее подразделений.
+				</label>
+				<!--<br/>
 				<label>
 				<input id="freeagent" name="radGroupregform1" type="radio" value="freeagent" />Свободный агент, работающий на себя.
 				</label>
@@ -248,7 +248,7 @@
 			</form>
 		</div>
 		<div id="regpage2" class="hide">
-			<form id="regagency" action="_scriptsphp/fish.php" method="get">
+			<form id="regagency" action="_scriptsphp/create_agency.php" method="get">
 				<label class="inform" for="invite_agency">
 					Код приглашения:
 				</label>
@@ -259,11 +259,11 @@
 				</label>
 				<input class="inform" name="agencyname" type="text" />
 				<br/>
-				<label class="inform" for="agencyinn">
-					ИНН:
+				<!--<label class="inform" for="agencyinn">
+				ИНН:
 				</label>
 				<input class="inform" name="agencyinn" type="text"/>
-				<br/>
+				<br/>-->
 				<label class="inform" for="agencyphon">
 					Телефоны агентства:
 				</label>
@@ -280,6 +280,11 @@
 						<strong>Регистрация руководителя агентства</strong>
 					</legend>
 					<br/>
+					<label class="inform" for="agencyleaderlastname">
+						Фамилия:
+					</label>
+					<input class="inform" name="agencyleaderlastname" type="text" />
+					<br/>
 					<label class="inform" for="agencyleaderferstname">
 						Имя:
 					</label>
@@ -290,11 +295,6 @@
 					</label>
 					<input class="inform" name="agencyleadersecondname" type="text" />
 					<br/>
-					<label class="inform" for="agencyleaderlastname">
-						Фамилия:
-					</label>
-					<input class="inform" name="agencyleaderlastname" type="text" />
-					<br/>
 					<label class="inform" for="agencyleaderlogin">
 						Логин:
 					</label>
@@ -303,19 +303,25 @@
 					<label class="inform" for="agencyleaderpassword">
 						Пароль:
 					</label>
-					<input class="inform" name="agencyleaderpassword" type="text" />
+					<input class="inform" id="agencyleaderpassword" name="agencyleaderpassword" type="text" />
 					<br/>
 					<label class="inform" for="agencyleaderconfpass">
 						Подтверждение пароля:
 					</label>
-					<input class="inform" name="agencyleaderconfpass" type="text" />
+					<input class="inform" id="agencyleaderconfpass" name="agencyleaderconfpass" type="text" />
 					<br/>
 				</fieldset>
 				<br/>
-				<fieldset>
+				<input id="is_manager" name="is_manager" type="checkbox" /><label for="is_manager">Заблокировать менеджера</label>
+				<fieldset id="agency_man_registration">
 					<legend>
 						<strong>Регистрация менеджера агентства</strong>
 					</legend>
+					<br/>
+					<label class="inform" for="agencymenlastname">
+						Фамилия:
+					</label>
+					<input class="inform" name="agencymenlastname" type="text" />
 					<br/>
 					<label class="inform" for="agencymenferstname">
 						Имя:
@@ -327,11 +333,6 @@
 					</label>
 					<input class="inform" name="agencymensecondname" type="text" />
 					<br/>
-					<label class="inform" for="agencymenlastname">
-						Фамилия:
-					</label>
-					<input class="inform" name="agencymenlastname" type="text" />
-					<br/>
 					<label class="inform" for="agencymenlogin">
 						Логин:
 					</label>
@@ -340,15 +341,15 @@
 					<label class="inform" for="agencymenpassword">
 						Пароль:
 					</label>
-					<input class="inform" name="agencymenpassword" type="text" />
+					<input class="inform" id="agencymenpassword" name="agencymenpassword" type="text" />
 					<br/>
 					<label class="inform" for="agencymenconfpass">
 						Подтверждение пароля:
 					</label>
-					<input class="inform" name="agencymenconfpass" type="text" />
-					<br/>
-					<input id="back4-1" name="" type="button" value="&lt;&lt; Назад" /><input id="next4-1" name="" type="button" value="Далее &gt;&gt;" />
+					<input class="inform" id="agencymenconfpass" name="agencymenconfpass" type="text" />
 				</fieldset>
+				<br/>
+				<input id="back4-1" name="" type="button" value="&lt;&lt; Назад" /><input id="next4-1" name="" type="submit" value="Далее &gt;&gt;" />
 			</form>
 		</div>
 		<div id="end-reg" class="hide">
@@ -356,6 +357,11 @@
 		</div>
 		<script type="text/javascript">
 			$(document).ready(function(){
+				var options = {
+			//     target: "#infomessage",
+			beforeSubmit: showRequest, // функция, вызываемая перед передачей
+			timeout: 3000 // тайм-аут
+		};
 				var econtainer = $('div.econtainer');
 				////первый экран - Выбор типа участника - сейчас нет частников
 				$("#next1").click(function(){
@@ -640,6 +646,131 @@
 					onfocusout: false,
 					onclick: false
 				});
+
+				var valid_agency = $("#regagency").validate({
+					rules: {
+						invite_agency: {
+							required: true,
+							remote: {
+								url: "../_scriptsphp/check_invite.php",
+								type: "post",
+								data: {
+									invite: function() {
+										return $("#invite_agency").val();
+									}
+								}
+							}
+						},
+						agencyname: {
+							required: true,
+							minlength: 5
+						},
+						agencyphon: "required",
+						agencymail:{
+							required: true,
+							email: true
+						},
+						agencyleaderferstname: "required",
+						agencyleadersecondname: "required",
+						agencyleaderlastname: "required",
+						agencyleaderlogin: "required",
+						agencyleaderpassword: {
+							required: true,
+							minlength: 8
+						},
+						agencyleaderconfpass: {
+							required: true,
+							minlength: 8,
+							equalTo: "#agencyleaderpassword"
+						},
+						agencymenferstname: "required",
+						agencymensecondname: "required",
+						agencymenlastname: "required",
+						agencymenlogin: "required",
+						agencymenpassword: {
+							required: true,
+							minlength: 8
+						},
+						agencymenconfpass: {
+							required: true,
+							minlength: 8,
+							equalTo: "#agencymenpassword"
+						}
+					},
+					messages: {
+						invite_agency: {
+							required: "Пожалуйста, введите Ваш \"Код приглашения\".",
+							remote: "Код приглашения не прошел проверку, попробуйте снова."
+						},
+						agencyname: {
+							required: "Пожалуйста, введите название агентства."
+						},
+						agencyphon: {
+							required: "Пожалуйста, введите телефоны."
+						},
+						agencymail:{
+							required: "Пожалуйста, укажите электронный адрес (e-mail) агентства.",
+							email: "Пожалуйста, укажите правильный электронный адрес (e-mail)."
+						},
+						agencyleaderferstname: {
+							required: "Пожалуйста, введите имя руководителя агентства."
+						},
+						agencyleadersecondname: {
+							required: "Пожалуйста, введите отчество руководителя агентства."
+						},
+						agencyleaderlastname: {
+							required: "Пожалуйста, введите фамилию руководителя агентства."
+						},
+						agencyleaderlogin: {
+							required: "Пожалуйста, создайте логин руководителя агентства."
+						},
+						agencyleaderpassword: {
+							required: "Пожалуйста, создайте пароль руководителя агентства."
+						},
+						agencyleaderconfpass: {
+							required: "Пожалуйста, подтвердите пароль руководителя агентства."
+						},
+						agencymenferstname: {
+							required: "Пожалуйста, введите имя менеджера агентства."
+						},
+						agencymensecondname: {
+							required: "Пожалуйста, введите отчество менеджера агентства."
+						},
+						agencymenlastname: {
+							required: "Пожалуйста, введите фамилию менеджера агентства."
+						},
+						agencymenlogin: {
+							required: "Пожалуйста, создайте логин менеджера агентства."
+						},
+						agencymenpassword: {
+							required: "Пожалуйста, создайте пароль менеджера агентства."
+						},
+						agencymenconfpass: {
+							required: "Пожалуйста, подтвердите пароль менеджера агентства."
+						}
+					},
+					submitHandler: function(form){
+						$(form).ajaxSubmit(options);
+						$('#regpage2').removeClass('show').addClass('hide');
+						$('#createpass').removeClass('show').addClass('hide');
+						$('#end-reg').removeClass('hide').addClass('show');
+						return false;
+					},
+					errorContainer: econtainer,
+					errorLabelContainer: $("ol", econtainer),
+					wrapper: 'li',
+					errorElement: "p",
+					onkeyup: false,
+					onfocusout: false,
+					onclick: false
+				});
+				function showRequest(formData, jqForm, options) {
+		var queryString = $.param(formData);
+				 alert('Вот что мы передаем: \n\n' + queryString);
+		// здесь можно вернуть false чтобы запретить отправку формы;
+		// любое отличное от fals значение разрешит отправку формы.
+		return true;
+	}
 				//                $("#subleaderpassword").blur(function(){
 				//                    $("#subleaderconfpass").valid();
 				//                });
@@ -666,7 +797,16 @@
 					$('#createpass').removeClass('show').addClass('hide');
 					$('#regpage2').removeClass('show').addClass('hide');
 					$('#regpage').removeClass('hide').addClass('show');
+					valid_agency.resetForm();
 					return false;
+				});
+				$('input:checkbox').click(function() {
+					$(this).check('toggle');
+					if(this.checked) {
+						$('#agency_man_registration').children("input").attr("disabled","disabled").addClass("ignore");
+					} else {
+						$('#agency_man_registration').children("input").removeAttr("disabled").removeClass("ignore");
+					}
 				});
 			});
 		</script>

@@ -24,10 +24,17 @@
 						<img id="up_eye" src="../_images/eye--exclamation.png" width="16" height="16" alt="" style="vertical-align:middle; cursor: pointer;" title=""/></span><br />
 					<label class="inform"></label><input type="button" id="up_submit" name="up_submit" class="" value="Применить изменения"/><br />
 					<p><a title="Вернуться" id="up_to_back" href="#">Вернуться</a></p>
-				</form></div></div><br />
+				</form></div></div>
 		<div id="pr_manipulation" style="margin:10px;">
-			<div id="n_prpt" class="d-link"><img src="_images/User_48x48.png" width="48" height="48" alt="Новый сотрудник" /><br /><a href="#" id="n_participant" class="mlink">Добавить сотрудника</a></div><br />
-			<div id="pr_test" style="margin:10px;"></div><br />
+			<div id="n_prpt" class="">
+			<a action="participant.add" params="" class="b-toolbar__item"><img class="b-ico" src="_images/User_48x48.png" width="32" height="32" alt="Новый сотрудник">
+			<span class="b-toolbar__item__label">Добавить</span></a>
+			<a action="participant.update" params="" class="b-toolbar__item"><img class="b-ico" src="_images/User_48x48.png" width="32" height="32" alt="Новый сотрудник">
+			<span class="b-toolbar__item__label">Обновить</span></a>
+			<a action="participant.remove" params="" class="b-toolbar__item"><img class="b-ico" src="_images/User_48x48.png" width="32" height="32" alt="Новый сотрудник">
+			<span class="b-toolbar__item__label">Удалить</span></a>
+			</div>
+			<div id="pr_test" style="margin:10px;"></div>
 			<div id="f_prpt_manipulation" style="padding:0px;">
 				<div style="padding:5px;"><form id="new-participant" name="new-participant" action="_scriptsphp/fish.php" method="get">
 						<div class="econtainer">
@@ -48,6 +55,11 @@
 </html>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$('.b-toolbar__item').live('mouseover', function(){
+			$(this).addClass("item__button");
+		}).live('mouseout', function(){
+			$(this).removeClass("item__button");
+		});
 		fillAgency("pu_agency");
 		//	$("#up_eye").click(function() { 
 		$("#up_eye").toggle(
@@ -73,7 +85,7 @@
 					bind_id = json.id;
 				} else {
 					bind_id = json.group;
-					$('#n_prpt').toggle();
+//					$('#n_prpt').toggle();
 				}
 				$.cookie("inquery", bind_id);
 			}
@@ -88,20 +100,29 @@
 				+ ((attribut.Role != "") ? '<span class="span-field">Должность: </span><label for="role">' + attribut.Role + '</label><br />': "")
 				+ ((attribut.Mail != "") ? '<span class="span-field">Эл. почта: </span>' + attribut.Mail + '<br />' : "")
 				+ ((attribut.Login != "") ? '<span class="span-field">Логин: </span>' + attribut.Login + '<br />' : "")
-				+ '</div><div style="width:10%; float:right; padding-top:5px; text-align:right; display:none;" class="redact-prpt">'
-				+ '<a href="#" class="p_update" title="Изменить"><img src="_images/Refresh_16x16.png" alt="Изменить" /></a><br /><a href="#" class="p_delete" title="Удалить"><img src="_images/Delete_16x16.png" alt="Удалить" style="margin-top:5px;"/></a></div></div>';
+				+ '</div><div style="width:10%; position:absolute; top:5px; right:5px; text-align:right;" class="redact-prpt"><input class="participant" name="participantRadioGroup" type="radio" value="'+ attribut.Id +'" />'
+				+ '</a></div></div>';
 			});
 			$("#pr_test").prepend(divs);
 		});
-		$('#n_participant').click( function(){
+		$("a[action='participant.add']").click( function(){
 			fillAgency("p_agency");
 			$('#f_prpt_manipulation').dialog('open');
 		});
 		$('.dinform').live('mouseover', function(){
-			$(this).css("background-color", "#E3F2E1").find('.redact-prpt').show();
+			$(this).css("background-color", "#E3F2E1");
 		}).live('mouseout', function(){
-			$(this).css("background-color", "#fff").find('.redact-prpt').hide();
+			$(this).css("background-color", "#fff");
 		});
+	//	
+		/*$('.b-toolbar__item').live('mouseover', function(){
+			$(this).css("background-color", "#DFEFFC;");
+		}).live('mouseout', function(){
+			$(this).css("background-color", "#fff");
+		});*/
+		
+
+
 		$('#up_to_back').click( function(){
 			$('#pr_manipulation').show();
 			$('#f_prpt_update').hide();
@@ -154,7 +175,7 @@
 			//$.blockUI();
 			var element = $(this);
 			var prpt_id = element.parents("div.dinform").find('input[name="p_id"]').val();	
-			$('#pr_manipulation').hide();
+//		$('#pr_manipulation').hide();
 			$('#f_prpt_update').show();
 			$.getJSON("../_scriptsphp/participant_reg.php", {
 				parameter: "participant",
