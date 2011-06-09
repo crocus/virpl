@@ -1,0 +1,24 @@
+body {
+font-family: Verdana,Arial,Helvetica;
+font-size: 8pt;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px
+}
+
+td {font-size: 8pt}
+td.sm1 {font-size: 8pt}
+
+a {font-size: 8pt;color: 0000ff;text-decoration: underline}
+a:vlink {font-size: 8pt;color: 0000ff;text-decoration: underline}
+a:alink {font-size: 8pt;color: 0000ff;text-decoration: underline}
+a:hover {font-size: 8pt;color: ff0000;text-decoration: underline}
+
+a.sm {font-size: 8pt;color: aaaaaa;text-decoration: underline}
+a.sm:vlink {font-size: 8pt;color: aaaaaa;text-decoration: underline}
+a.sm:alink {font-size: 8pt;color: aaaaaa;text-decoration: underline}
+a.sm:hover {font-size: 8pt;color: ff0000;text-decoration: underline}
+
+.input { font-size: 8pt}
+.option { font-size: 8pt}
